@@ -1,0 +1,53 @@
+* {
+  margin: 0; padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+
+}
+
+nav{
+    background-color: #333;
+    text-align: center;
+}
+
+.menu{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+}
+
+.menu li a{
+    text-decoration: none;
+    display: block;
+    color: white;
+    padding: 15px 20px;
+    
+}
+
+.submenu{
+    display: none;
+    position: absolute;
+    background-color: black;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.menu li a:hover{
+    background-color: grey;
+}
+
+.menu li ul{
+    position: absolute;
+    display: none;
+    
+}
+
+.menu li:hover ul, .menu li.over ul{
+    display: block;
+
+}

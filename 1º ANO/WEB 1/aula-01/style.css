@@ -1,0 +1,57 @@
+html{
+    font-family: sans-serif;
+    background-image: url(zoio-i-alek.jpeg);
+    background-size: 100%;
+    background-attachment: fixed;
+}
+p, ul {
+    color: red;
+}
+
+p:hover {
+    color:cyan;
+}
+
+h1 {
+    color: blue;
+    padding: 40px;
+    font-size: 50px;
+    border: 2px double black;
+    background-color: aqua;
+        
+}
+
+body{
+    width:600px;
+    margin: 0 auto;
+    background-color: #cecece;
+    padding: 0 20px 20px 20px;
+    border: 5px solid #a8f2a0;
+    background-size: 100%;
+}
+
+
+aside{
+    background-color: pink;
+}
+
+ol{
+    font-size: 40px;
+    color:green;
+    font-family: 'Calibri', sans-serif;
+}
+
+ul{
+    font-size: 25px;
+    color:navy;
+    font-family: 'Arial';
+}
+article{
+    background-color: #4635b1;
+    
+}
+
+.sub1{
+    color:black;
+    font-size: 40px;
+}
