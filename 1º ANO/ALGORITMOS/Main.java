@@ -1,10 +1,10 @@
-import utils.IO;
-import aulas.*;
+import utils.*;
+import aula.*;
 
 public class Main{
     
     public static void main(String[] args){
         IO.hello();
-        Aula03.aula();
+        aula07.aula("aula");
     }
 }

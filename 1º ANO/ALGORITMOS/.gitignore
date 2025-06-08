@@ -1,2 +1,5 @@
-/lista3
-/lista4
+*.pdf
+*.class
+/.vscode
+/lista3/fluxograma
+/lista4/fluxograma

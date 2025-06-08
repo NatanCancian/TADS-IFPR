@@ -1,4 +1,3 @@
-package aulas;
 import java.util.Scanner;
 public class metodosLista {
     
@@ -37,7 +36,7 @@ public class metodosLista {
         valor = entrada.nextLine();
         return valor;
     }
-       
+    
     public static boolean lerValorBoolean(){
         boolean valor = false;
         valor = entrada.nextBoolean();
