@@ -559,19 +559,24 @@ public class metodoLista {
         mostrarNumerosPerfeitos(numero);
     }
 
-    public static void mostrarNumerosPerfeitos(int numero){
+    public static boolean mostrarNumerosPerfeitos(int numero){
         int i = 0;
         int valor = 0;
+        boolean resultado = false;
         for(i = 1; i < numero; i++){
             if((numero % i) == 0){
                 valor += i;
-            }
+            }            
         }
+
         if(valor == numero){
             metodoLista.imprimir("O valor informado é um número perfeito!");
+            resultado = true;
         }else{
             metodoLista.imprimir("O valor informado não é um número perfeito!");
+            resultado = false;
         }
+        return resultado;
     }
 
     public static void EX24(){
@@ -586,11 +591,22 @@ public class metodoLista {
     }
 
     public static void mostrarProximosNumerosPerfeitos(int numero){
-        int i = numero;
+        int i = 0;
         int valor = 0;
         double resultado = 0;
-         
-        for(i = 1; i <= numero; i++){
+        
+        for(i= numero; i != 0; i++){
+            if(!mostrarNumerosPerfeitos(i)){
+                continue;
+            }else{
+                break;
+            }
+        }
+        metodoLista.imprimir("O próximo número perfeito é: " + i);
+        }
+
+        
+
             // TEORIA GERAL DE EUCLIDES PARA NÚMEROS PERFEITOS
             // 2 p−1 ×(2p−1)   
             /*
@@ -599,8 +615,6 @@ public class metodoLista {
             // primeiro se descobre se o valor o valor é primo
             // se for pega e parte para o próximo número perfeito após ter o valor informado
                
-            }
-            metodoLista.imprimir("O próximo número perfeito é: " + resultado);
-        }
-        
-    }
+        //  }
+            
+        } 
