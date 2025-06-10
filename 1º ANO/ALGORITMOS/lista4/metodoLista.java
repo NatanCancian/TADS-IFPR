@@ -13,7 +13,7 @@ public class metodoLista {
 
     }
 
-    public static void imprimeLong(long texto) {
+    public static void imprimirDouble(double texto) {
         System.out.println(texto);
     }
 
@@ -74,7 +74,7 @@ public class metodoLista {
     public static int contarIntervalo(int inicio, int fim) {
         int i = 0;
         for (i = inicio; i < fim;) {
-            metodoLista.imprimeInt(i);
+            imprimeInt(i);
             i++;
         }
         return i;
@@ -84,7 +84,7 @@ public class metodoLista {
         int i = 0;
         for (i = inicio; i < fim;) {
             if ((i % 2) == 0) {
-                metodoLista.imprimeInt(i);
+                imprimeInt(i);
                 i++;
             } else {
                 i++;
@@ -96,7 +96,7 @@ public class metodoLista {
     public static int contarIntervaloInverso(int inicio, int fim) {
         int i = 0;
         for (i = inicio; i > fim;) {
-            metodoLista.imprimeInt(i);
+            imprimeInt(i);
             i--;
         }
         return i;
@@ -106,7 +106,7 @@ public class metodoLista {
         int i = 0;
         for (i = inicio; i > fim;) {
             if ((i % 2) == 0) {
-                metodoLista.imprimeInt(i);
+                imprimeInt(i);
                 i--;
             } else {
                 i--;
@@ -120,7 +120,7 @@ public class metodoLista {
         int soma = 0;
         for (i = inicio; i <= fim; i++) {
             soma += i;
-            metodoLista.imprimeInt(soma);
+            imprimeInt(soma);
         }
         return soma;
     }
@@ -131,7 +131,7 @@ public class metodoLista {
         for (i = inicio; i <= fim; i++) {
             if ((i % 2) == 0) {
                 soma += i;
-                metodoLista.imprimeInt(soma);
+                imprimeInt(soma);
             } else {
                 continue;
             }
@@ -144,15 +144,15 @@ public class metodoLista {
         int soma = 0;
         for (i = inicio; i >= fim; i--) {
             soma += i;
-            metodoLista.imprimeInt(soma);
+            imprimeInt(soma);
         }
         return soma;
     }
 
     public static void ex17() {
         int numero = 0;
-        metodoLista.imprimir("Informe um valor inteiro");
-        numero = metodoLista.lerValorInt();
+        imprimir("Informe um valor inteiro");
+        numero = lerValorInt();
         processarTabuada(numero);
     }
 
@@ -165,7 +165,7 @@ public class metodoLista {
         int resultado;
         for (i = 1; i <= 20; i++) {
             resultado = numero * i;
-            metodoLista.imprimir(numero + " * " + i + " = " + resultado);
+            imprimir(numero + " * " + i + " = " + resultado);
         }
     }
 
@@ -175,7 +175,7 @@ public class metodoLista {
         for (i = inicio; i >= fim; i--) {
             if ((i % 2) == 0) {
                 soma += i;
-                metodoLista.imprimeInt(soma);
+                imprimeInt(soma);
             } else {
                 continue;
             }
@@ -215,8 +215,8 @@ public class metodoLista {
         // int numero = 0;
 
         for (i = 1; i <= 5; i++) {
-            metodoLista.imprimir("Informe um números entre 0 e 1000:");
-            valorLido = metodoLista.lerValorInt();
+            imprimir("Informe um números entre 0 e 1000:");
+            valorLido = lerValorInt();
 
             if ((valorLido > 1000) || (valorLido < 0)) {
                 continue;
@@ -300,21 +300,30 @@ public class metodoLista {
         int soma = 1;
         for (i = 1; i <= n; i++) {
             soma *= i;
-            metodoLista.imprimeInt(soma);
+            imprimeInt(soma);
         }
         return soma;
     }
 
     public static int calcularFibonacci(int fim) {
-        int i = 0;
-        int termo1 = 1;
-        int termo2 = 1;
-        int termo3 = 1;
+        int i = 1;
+        int termo1 = 0;
+        int termo2 = 0;
+        int termo3 = 0;
         imprimir("Defina o tamanho da sequência de Fibonacci:");
         fim = lerValorInt();
         for (i = 1; i <= fim; i++) {
+            if ((termo1 == 0) && (termo2 == 0) && (termo3 == 0)) {
+                termo1 = i;
+                termo2 = i;
+                termo3 = i;
+                imprimeInt(termo1);
+                i++;
+                imprimeInt(termo2);
+                i++;
+            }
             termo3 = termo1 + termo2;
-            imprimir("," + termo3);
+            imprimeInt(termo3);
             termo1 = termo2;
             termo2 = termo3;
         }
@@ -428,9 +437,9 @@ public class metodoLista {
         int i = 0;
         double resultado = 0;
         double total = 0;
-        
-        for(i = 1; i <= 64; i++){
-            total = Math.pow(2, i); 
+
+        for (i = 1; i <= 64; i++) {
+            total = Math.pow(2, i);
             imprimir("Casa " + i + " : " + total + " grãos");
         }
 
@@ -462,9 +471,9 @@ public class metodoLista {
 
     public static void EX018_1() {
         int numero = 0;
-        metodoLista.imprimir("Informe um valor inteiro");
-        numero = metodoLista.lerValorInt();
-        metodoLista.imprimir("Divisíveis por " + numero);
+        imprimir("Informe um valor inteiro");
+        numero = lerValorInt();
+        imprimir("Divisíveis por " + numero);
         processarDivisiveis(numero);
 
     }
@@ -477,144 +486,239 @@ public class metodoLista {
         int i = 0;
         for (i = 1; i <= 100; i++) {
             if (((i % numero) == 0)) {
-                metodoLista.imprimeInt(i);
+                imprimeInt(i);
             } else {
                 continue;
             }
         }
     }
 
-    public static void EX20(){
+    public static void EX20() {
         processarNumerosDiv11Mod5();
     }
 
-    public static void processarNumerosDiv11Mod5(){
+    public static void processarNumerosDiv11Mod5() {
         mostrarNumerosDiv11Mod5();
     }
 
-    public static void mostrarNumerosDiv11Mod5(){
+    public static void mostrarNumerosDiv11Mod5() {
         int i = 0;
-        for(i = 500; i <= 2000; i++){
-            if((i % 11) == 5){
+        for (i = 500; i <= 2000; i++) {
+            if ((i % 11) == 5) {
                 imprimeInt(i);
-            }else{
+            } else {
                 continue;
             }
         }
     }
 
-    public static void EX21(){
+    public static void EX21() {
         int numero = 0;
-        metodoLista.imprimir("Informe um valor inteiro");
-        numero = metodoLista.lerValorInt();
-        metodoLista.imprimir("Divisíveis por " + numero);
+        imprimir("Informe um valor inteiro");
+        numero = lerValorInt();
+        imprimir("Divisíveis por " + numero);
         processarDivisioresMenores(numero);
     }
 
-    public static void processarDivisioresMenores(int numero){
+    public static void processarDivisioresMenores(int numero) {
         mostrarDivisoresMenores(numero);
     }
 
-    public static void mostrarDivisoresMenores(int numero){
+    public static void mostrarDivisoresMenores(int numero) {
         int i = 0;
         for (i = 1; i < numero; i++) {
             if (((numero % i) == 0)) {
-                metodoLista.imprimeInt(i);
-            }else {
+                imprimeInt(i);
+            } else {
                 continue;
             }
         }
     }
 
-    public static void EX22(){
+    public static void EX22() {
         int numero = 0;
-        metodoLista.imprimir("Informe um valor inteiro");
-        numero = metodoLista.lerValorInt();
+        imprimir("Informe um valor inteiro");
+        numero = lerValorInt();
         processarSomaeMedia(numero);
     }
 
-    public static void processarSomaeMedia(int numero){
+    public static void processarSomaeMedia(int numero) {
         mostrarSomaeMedia(numero);
     }
 
-    public static void mostrarSomaeMedia(int numero){
+    public static void mostrarSomaeMedia(int numero) {
         int i = 0;
         double soma = 0;
         double media = 0;
-        for(i = 1; i <= numero; i++){
+        for (i = 1; i <= numero; i++) {
             soma += i;
         }
         media = soma / numero;
         imprimir("Soma: " + soma + " Média: " + media);
     }
 
-    public static void EX23(){
+    public static void EX23() {
         int numero = 0;
-        metodoLista.imprimir("Informe um valor inteiro");
-        numero = metodoLista.lerValorInt();
+        imprimir("Informe um valor inteiro");
+        numero = lerValorInt();
         processarNumerosPerfeitos(numero);
     }
 
-    public static void processarNumerosPerfeitos(int numero){
+    public static void processarNumerosPerfeitos(int numero) {
         mostrarNumerosPerfeitos(numero);
     }
 
-    public static boolean mostrarNumerosPerfeitos(int numero){
+    public static boolean mostrarNumerosPerfeitos(int numero) {
         int i = 0;
         int valor = 0;
         boolean resultado = false;
-        for(i = 1; i < numero; i++){
-            if((numero % i) == 0){
+        for (i = 1; i < numero; i++) {
+            if ((numero % i) == 0) {
                 valor += i;
-            }            
+            }
         }
 
-        if(valor == numero){
-            metodoLista.imprimir("O valor informado é um número perfeito!");
+        if (valor == numero) {
+            imprimir(i + " é um número perfeito!");
             resultado = true;
-        }else{
-            metodoLista.imprimir("O valor informado não é um número perfeito!");
+        } else {
+            imprimir(i + " não é um número perfeito!");
             resultado = false;
         }
         return resultado;
     }
 
-    public static void EX24(){
+    public static void EX24() {
         int numero = 0;
-        metodoLista.imprimir("Informe um valor inteiro");
-        numero = metodoLista.lerValorInt();
+        imprimir("Informe um valor inteiro");
+        numero = lerValorInt();
         processarProximosNumerosPerfeitos(numero);
     }
 
-    public static void processarProximosNumerosPerfeitos(int numero){
+    public static void processarProximosNumerosPerfeitos(int numero) {
         mostrarProximosNumerosPerfeitos(numero);
     }
 
-    public static void mostrarProximosNumerosPerfeitos(int numero){
+    public static void mostrarProximosNumerosPerfeitos(int numero) {
         int i = 0;
-        int valor = 0;
-        double resultado = 0;
-        
-        for(i= numero; i != 0; i++){
-            if(!mostrarNumerosPerfeitos(i)){
+
+        for (i = numero; i != 0; i++) {
+            if (!mostrarNumerosPerfeitos(i)) {
                 continue;
-            }else{
+            } else {
                 break;
             }
         }
-        metodoLista.imprimir("O próximo número perfeito é: " + i);
+        imprimir("O próximo número perfeito é: " + i);
+    }
+
+    public static void EX25() {
+        int inicioIntervalo = 0;
+        int fimIntervalo = 0;
+        imprimir("Informe o início do intervalo");
+        inicioIntervalo = lerValorInt();
+        imprimir("Informe o fim do intervalo");
+        fimIntervalo = lerValorInt();
+        processarIntervaloNumerosPerfeitos(inicioIntervalo, fimIntervalo);
+    }
+
+    public static void processarIntervaloNumerosPerfeitos(int inicioIntervalo, int fimIntervalo) {
+        mostrarIntervaloNumerosPerfeitos(inicioIntervalo, fimIntervalo);
+    }
+
+    public static void mostrarIntervaloNumerosPerfeitos(int inicioIntervalo, int fimIntervalo) {
+        int i = 0;
+
+        for (i = inicioIntervalo; i <= fimIntervalo; i++) {
+            if (mostrarNumerosPerfeitos(i)) {
+                imprimeInt(i);
+            } else {
+                continue;
+            }
         }
+    }
 
+    public static void EX26() {
+        processarCalcularFibonacci();
+    }
+
+    public static void processarCalcularFibonacci() {
+        calcularFibonacci(0);
+    }
+
+    public static void EX27() {
+        processarCalcularPrimos();
+    }
+
+    public static void processarCalcularPrimos() {
+        calcularPrimos();
+    }
+
+    public static void calcularPrimos() {
+        int i = 0;
+        int numero = 0;
+        int divisores = 0;
+        imprimir("Informe um número");
+        numero = lerValorInt();
+        for (i = 1; i <= numero; i++) {
+            if ((numero % i) == 0) {
+                divisores += i;
+            } else {
+                continue;
+            }
+        }
+        if (divisores == numero + 1) {
+            imprimir("É primo!");
+        } else {
+            imprimir("Não é primo");
+        }
+    }
+
+    public static void EX28(){
+        processarSomarInversos();
+    }
+
+    public static void processarSomarInversos(){
+        somarInversos();
+    }
+
+    public static void somarInversos(){
+        double i = 0;
+        int numero = 0;
+        double soma = 0;
+        imprimir("Informe um número");
+        numero = lerValorInt();
+
+        for(i = 1; i <= numero; i++){
+            soma += 1.0/i;   
+        }
+        imprimirDouble(soma);
+    }
+
+    public static void EX29(){
+        processarPadraoLinhas();
+    }
+    
+    public static void processarPadraoLinhas(){
+        desenharPadraoLinhas();
+    }
+
+    public static void desenharPadraoLinhas(){
+        int i = 0;
+        int j = 0;
+        int linhas = 0;
+        imprimir("Informe um número:");
+        linhas = lerValorInt();
         
+        for(i = 1; i <= linhas; i++){
+           System.out.println();
+            for(j = 1; j <= i; j++){
+                System.out.print("*");
+            }
+        }
+    }
+    
+    // TEORIA GERAL DE EUCLIDES PARA NÚMEROS PERFEITOS
+    // 2 p−1 ×(2p−1)
 
-            // TEORIA GERAL DE EUCLIDES PARA NÚMEROS PERFEITOS
-            // 2 p−1 ×(2p−1)   
-            /*
-                TEM QUE PARTIR DE NÚMERO PRIMO PARA SER NÚMERO PERFEITO
-            */
-            // primeiro se descobre se o valor o valor é primo
-            // se for pega e parte para o próximo número perfeito após ter o valor informado
-               
-        //  }
-            
-        } 
+}
