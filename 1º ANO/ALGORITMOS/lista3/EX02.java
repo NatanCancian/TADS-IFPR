@@ -1,3 +1,4 @@
+import utils.IO;
 public class EX02 {
     
     public static double calcularDolares(double cotacaoDolar, double quantDolares){
@@ -10,12 +11,12 @@ public class EX02 {
         double quantDolares;
         double quantReais;
 
-        metodosLista.imprimir("Informe a cotação atual do dólar");
-        cotacaoDolar = metodosLista.lerValorDouble();
-        metodosLista.imprimir("Informe quantos dólares você possui");
-        quantDolares = metodosLista.lerValorDouble();
+        IO.imprimir("Informe a cotação atual do dólar");
+        cotacaoDolar = IO.lerValorDouble();
+        IO.imprimir("Informe quantos dólares você possui");
+        quantDolares = IO.lerValorDouble();
         quantReais = calcularDolares(cotacaoDolar, quantDolares);
-        metodosLista.imprimir("Você possui R$ " + quantReais + " reais");
+        IO.imprimir("Você possui R$ " + quantReais + " reais");
 
     }
 }

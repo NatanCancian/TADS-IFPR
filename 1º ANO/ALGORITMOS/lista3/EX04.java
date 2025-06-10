@@ -1,3 +1,4 @@
+import utils.IO;
 public class EX04 {
     
     public static double calcularConsumo(double distanciaTotal, double quantCombustivel){
@@ -7,11 +8,11 @@ public class EX04 {
     }
     public static void main(String[] args) {
         double mediaConsumo = 0; double distanciaTotal = 0; double quantCombustivel = 0;
-        metodosLista.imprimir("Informe a quantidade de KM's percorridos:");
-        distanciaTotal = metodosLista.lerValorDouble();
-        metodosLista.imprimir("Informe quantos litros de combustível foram gastos:");
-        quantCombustivel = metodosLista.lerValorDouble();
+        IO.imprimir("Informe a quantidade de KM's percorridos:");
+        distanciaTotal = IO.lerValorDouble();
+        IO.imprimir("Informe quantos litros de combustível foram gastos:");
+        quantCombustivel = IO.lerValorDouble();
         mediaConsumo = calcularConsumo(distanciaTotal, quantCombustivel);
-        metodosLista.imprimir("Seu veículo obteve a média de " + mediaConsumo + " KM/L");
+        IO.imprimir("Seu veículo obteve a média de " + mediaConsumo + " KM/L");
     }
 }

@@ -1,3 +1,4 @@
+import utils.IO;
 public class EX15 {
     
     public static String calcularBissexto(int ano){
@@ -24,9 +25,9 @@ public class EX15 {
 
     public static void main(String[] args) {
         int ano = 0; String tipoAno = null;
-        metodosLista.imprimir("Informe um ano: ");
-        ano = metodosLista.lerValorInt();
+        IO.imprimir("Informe um ano: ");
+        ano = IO.lerValorInt();
         tipoAno = calcularBissexto(ano);
-        metodosLista.imprimir(ano + " " + tipoAno);
+        IO.imprimir(ano + " " + tipoAno);
     }
 }

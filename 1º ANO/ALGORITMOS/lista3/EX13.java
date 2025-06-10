@@ -1,4 +1,4 @@
-
+import utils.IO;
 public class EX13 {
     //CONSTANTES
     final static double IMC_LIMITE_ABAIXO = 18.5;
@@ -39,19 +39,19 @@ public class EX13 {
         double peso = 0;
         double imc = 0;
 
-        metodosLista.imprimir("Digite sua altura");
-        altura = metodosLista.lerValorDouble();
+        IO.imprimir("Digite sua altura");
+        altura = IO.lerValorDouble();
 
-        metodosLista.imprimir("Digite seu peso");
-        peso = metodosLista.lerValorDouble();
+        IO.imprimir("Digite seu peso");
+        peso = IO.lerValorDouble();
 
         // PROCESSAMENTO DE DADOS
         imc = calcularIMC(peso, altura);
 
         // SAÍDA DE DADOS
         String resulString = "IMC é " + imc;
-        metodosLista.imprimir(resulString);
+        IO.imprimir(resulString);
         String classificacaoResultado = "Sua classificação é " + classificarIMC(imc);
-        metodosLista.imprimir(classificacaoResultado);
+        IO.imprimir(classificacaoResultado);
     }
 }

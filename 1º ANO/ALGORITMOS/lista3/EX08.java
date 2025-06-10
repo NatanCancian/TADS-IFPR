@@ -1,3 +1,4 @@
+import utils.IO;
 public class EX08 {
     
     public static String calcularDiaSemana(int numero){
@@ -23,9 +24,9 @@ public class EX08 {
     }
     public static void main(String[] args) {
         String dia = null; int numero = 0;
-        metodosLista.imprimir("Informe um dia da semana:");
-        numero = metodosLista.lerValorInt();
+        IO.imprimir("Informe um dia da semana:");
+        numero = IO.lerValorInt();
         dia = calcularDiaSemana(numero);
-        metodosLista.imprimir(dia);
+        IO.imprimir(dia);
     }
 }

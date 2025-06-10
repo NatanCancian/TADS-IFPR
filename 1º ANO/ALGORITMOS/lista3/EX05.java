@@ -1,3 +1,4 @@
+import utils.IO;
 public class EX05 {
     
     public static String calcularNumeral(double numero){
@@ -14,9 +15,9 @@ public class EX05 {
 
     public static void main(String[] args) {
         double numero = 0; String resposta = null;
-        metodosLista.imprimir("Informe um número:");
-        numero = metodosLista.lerValorDouble();
+        IO.imprimir("Informe um número:");
+        numero = IO.lerValorDouble();
         resposta = calcularNumeral(numero);
-        metodosLista.imprimir("Seu número é " + resposta);        
+        IO.imprimir("Seu número é " + resposta);        
     }
 }

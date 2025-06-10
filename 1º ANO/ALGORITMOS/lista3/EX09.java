@@ -1,4 +1,4 @@
-
+import utils.IO;
 public class EX09 {
 
     public static double calcularAreaTrapezio(double baseMenor, double baseMaior, double altura) {
@@ -14,20 +14,20 @@ public class EX09 {
         double areaTrapezio = 0;
         String saida = null;
 
-        metodosLista.imprimir("||||||||||||||||||||||||||||||");
-        metodosLista.imprimir("CALCULADORA DE TRAPÉZIO");
-        metodosLista.imprimir("||||||||||||||||||||||||||||||");
-        metodosLista.imprimir("Informe o valor da base menor:");
-        baseMenor = metodosLista.lerValorDouble();
-        metodosLista.imprimir("||||||||||||||||||||||||||||||");
-        metodosLista.imprimir("Informe o valor da base maior:");
-        baseMaior = metodosLista.lerValorDouble();
-        metodosLista.imprimir("||||||||||||||||||||||||||||||");
-        metodosLista.imprimir("Informe a altura do trapézio");
-        altura = metodosLista.lerValorDouble();
-        metodosLista.imprimir("||||||||||||||||||||||||||||||");
+        IO.imprimir("||||||||||||||||||||||||||||||");
+        IO.imprimir("CALCULADORA DE TRAPÉZIO");
+        IO.imprimir("||||||||||||||||||||||||||||||");
+        IO.imprimir("Informe o valor da base menor:");
+        baseMenor = IO.lerValorDouble();
+        IO.imprimir("||||||||||||||||||||||||||||||");
+        IO.imprimir("Informe o valor da base maior:");
+        baseMaior = IO.lerValorDouble();
+        IO.imprimir("||||||||||||||||||||||||||||||");
+        IO.imprimir("Informe a altura do trapézio");
+        altura = IO.lerValorDouble();
+        IO.imprimir("||||||||||||||||||||||||||||||");
         areaTrapezio = calcularAreaTrapezio(baseMenor, baseMaior, altura);
         saida = "A área do trapézio é : " + areaTrapezio + "cm";
-        metodosLista.imprimir(saida);
+        IO.imprimir(saida);
     }
 }

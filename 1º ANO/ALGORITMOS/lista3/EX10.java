@@ -1,3 +1,4 @@
+import utils.IO;
 public class EX10 {
     
     public static String calcularEleitor(double idade){
@@ -13,9 +14,9 @@ public class EX10 {
     }
     public static void main(String[] args) {
         String sitaucaoEleitor = null; double idade = 0;
-        metodosLista.imprimir("Prezado eleitor informe sua idade para consultar sua situação eleitoral");
-        idade = metodosLista.lerValorDouble();
+        IO.imprimir("Prezado eleitor informe sua idade para consultar sua situação eleitoral");
+        idade = IO.lerValorDouble();
         sitaucaoEleitor = calcularEleitor(idade);
-        metodosLista.imprimir("Prezado Eleitor você é considerado " + sitaucaoEleitor); 
+        IO.imprimir("Prezado Eleitor você é considerado " + sitaucaoEleitor); 
     }
 }

@@ -1,5 +1,6 @@
+import utils.IO;
 public class EX21 {
     public static void main(String[] args) {
-        metodoLista.EX21();
+        IO.EX21();
     }
 }

@@ -1,3 +1,4 @@
+import utils.IO;
 public class EX06 {
     
     public static String calcularParouImpar(int numero){
@@ -15,11 +16,11 @@ public class EX06 {
     }
     public static void main(String[] args) {
         int numero = 0; String classNumero = null;
-        metodosLista.imprimir("CALCULADORA DE PAR OU ÍMPAR");
-        metodosLista.imprimir("||||||||||||||||||||||||||||");
-        metodosLista.imprimir("Informe um número:");
-        numero = metodosLista.lerValorInt();
+        IO.imprimir("CALCULADORA DE PAR OU ÍMPAR");
+        IO.imprimir("||||||||||||||||||||||||||||");
+        IO.imprimir("Informe um número:");
+        numero = IO.lerValorInt();
         classNumero = calcularParouImpar(numero);
-        metodosLista.imprimir("Seu número é " + classNumero);
+        IO.imprimir("Seu número é " + classNumero);
     }
 }

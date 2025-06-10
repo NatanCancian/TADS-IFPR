@@ -1,16 +1,17 @@
+import utils.IO;
 public class EX3 {
     public static void main(String[] args) {
         //Sequência decrescente
 
         int inicio = 0; int fim = 0; int contagem = 0;
-        metodoLista.imprimir("Digite um valor");
-        fim = metodoLista.lerValorInt();
+        IO.imprimir("Digite um valor");
+        fim = IO.lerValorInt();
         if(fim > inicio){
-            contagem = metodoLista.contarIntervaloInverso(fim, inicio);
-            metodoLista.imprimeInt(contagem);
+            contagem = IO.contarIntervaloInverso(fim, inicio);
+            IO.imprimeInt(contagem);
         }else{
-            contagem = metodoLista.contarIntervalo(fim, inicio);
-            metodoLista.imprimeInt(contagem);
+            contagem = IO.contarIntervalo(fim, inicio);
+            IO.imprimeInt(contagem);
         }       
     }
 }

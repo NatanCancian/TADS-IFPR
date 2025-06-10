@@ -1,3 +1,4 @@
+import utils.IO;
 public class EX11 {
     
     public static String calcularConceito(double nota1, double nota2, double nota3){
@@ -18,15 +19,15 @@ public class EX11 {
     }
     public static void main(String[] args) {
         String nomealuno = null; String mediaFinal = null; double nota1 = 0; double nota2 = 0; double nota3 = 0;
-        metodosLista.imprimir("Informe o nome do Aluno:");
-        nomealuno = metodosLista.lerValorString();
-        metodosLista.imprimir("Informe a primeira nota");
-        nota1 = metodosLista.lerValorDouble();
-        metodosLista.imprimir("Informe a segunda nota");
-        nota2 = metodosLista.lerValorDouble();
-        metodosLista.imprimir("Informe a terceira nota");
-        nota3 = metodosLista.lerValorDouble();
+        IO.imprimir("Informe o nome do Aluno:");
+        nomealuno = IO.lerValorString();
+        IO.imprimir("Informe a primeira nota");
+        nota1 = IO.lerValorDouble();
+        IO.imprimir("Informe a segunda nota");
+        nota2 = IO.lerValorDouble();
+        IO.imprimir("Informe a terceira nota");
+        nota3 = IO.lerValorDouble();
         mediaFinal = calcularConceito(nota1, nota2, nota3);
-        metodosLista.imprimir("Aluno: " + nomealuno + " " + mediaFinal);         
+        IO.imprimir("Aluno: " + nomealuno + " " + mediaFinal);         
     }
 }

@@ -1,3 +1,4 @@
+import utils.IO;
 public class EX12 {
     
     public static String calcularCategoria(int idade){
@@ -20,9 +21,9 @@ public class EX12 {
 
     public static void main(String[] args) {
         int idade = 0; String categoria = null; 
-        metodosLista.imprimir("Informe a idade do atleta");    
-        idade = metodosLista.lerValorInt();
+        IO.imprimir("Informe a idade do atleta");    
+        idade = IO.lerValorInt();
         categoria = calcularCategoria(idade);
-        metodosLista.imprimir("Atleta com " + idade + " anos," + " categoria " + categoria);
+        IO.imprimir("Atleta com " + idade + " anos," + " categoria " + categoria);
     }
 }

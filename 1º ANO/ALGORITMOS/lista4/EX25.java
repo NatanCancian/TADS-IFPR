@@ -1,5 +1,6 @@
+import utils.IO;
 public class EX25 {
     public static void main(String[] args) {
-        metodoLista.EX25();
+        IO.EX25();
     }
 }

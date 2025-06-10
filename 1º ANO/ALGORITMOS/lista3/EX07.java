@@ -1,3 +1,4 @@
+import utils.IO;
 public class EX07 {
     
     public static String calcularMaior(int valor1, int valor2, int valor3){
@@ -15,15 +16,15 @@ public class EX07 {
     }
     public static void main(String[] args) {
         String maior = null; int valor1 = 0; int valor2 = 0; int valor3 = 0;
-        metodosLista.imprimir("CALCULADORA DE NÚMERO MAIOR");
-        metodosLista.imprimir("Informe 3 números para verificar qual deles é o maior");
-        metodosLista.imprimir("Informe o 1º número:");
-        valor1 = metodosLista.lerValorInt();
-        metodosLista.imprimir("Informe o 2º número:");
-        valor2 = metodosLista.lerValorInt();
-        metodosLista.imprimir("Informe o 3º número:");
-        valor3 = metodosLista.lerValorInt();
+        IO.imprimir("CALCULADORA DE NÚMERO MAIOR");
+        IO.imprimir("Informe 3 números para verificar qual deles é o maior");
+        IO.imprimir("Informe o 1º número:");
+        valor1 = IO.lerValorInt();
+        IO.imprimir("Informe o 2º número:");
+        valor2 = IO.lerValorInt();
+        IO.imprimir("Informe o 3º número:");
+        valor3 = IO.lerValorInt();
         maior = calcularMaior(valor1, valor2, valor3);
-        metodosLista.imprimir(maior);
+        IO.imprimir(maior);
     }
 }

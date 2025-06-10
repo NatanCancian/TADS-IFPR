@@ -1,4 +1,4 @@
-
+import utils.IO;
 public class EX01 {
 
         public static double calcularAlturaPredio(double alturaAndares, int qntAndares){
@@ -14,17 +14,17 @@ public class EX01 {
         String saida;
 
         //inicio
-        metodosLista.imprimir("Informe a altura dos andares");
-        alturaAndares = metodosLista.lerValorDouble();
-        metodosLista.imprimir("Informe a quantidade dos andares");
-        qntAndares = metodosLista.lerValorInt();
+        IO.imprimir("Informe a altura dos andares");
+        alturaAndares = IO.lerValorDouble();
+        IO.imprimir("Informe a quantidade dos andares");
+        qntAndares = IO.lerValorInt();
 
         //processamento
         alturaPredio = calcularAlturaPredio(alturaAndares, qntAndares);
 
         //saida
         saida = "A altura do prédio é: " + alturaPredio;
-        metodosLista.imprimir(saida);
+        IO.imprimir(saida);
         
     }
 }
