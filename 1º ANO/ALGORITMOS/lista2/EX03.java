@@ -1,8 +1,7 @@
 package lista2;
-import utils.IO;
-public class EX01 {
+import utils.*;
+public class EX03 {
     public static void main(String[] args) {
-        IO.EX01_2();    
+        IO.EX03_2();
     }
-    
 }

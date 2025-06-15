@@ -716,6 +716,162 @@ public class IO{
             }
         }
     }
-}    
+
+public static void EX01_2(){
+    processarAntecessoresSucessores();
+}
+
+public static void processarAntecessoresSucessores(){
+    mostrarAntecessoresSucessores();
+}
+
+public static void mostrarAntecessoresSucessores(){
+    int numero = 0;
+    imprimir("Informe um número:");
+    numero = lerValorInt();
+    imprimir("O antecessor é: " + (numero-1) + "o valor sucessor é: " + (numero+1));  
+  }
+
+public static void EX02_2(){
+    mostrarBoaTarde();
+}
+
+public static void mostrarBoaTarde(){
+    processarBoaTarde();
+}
+
+public static void processarBoaTarde(){
+    String nome = null;
+    imprimir("Informe seu nome:");
+    nome = lerValorString();
+    imprimir("Boa tarde " + nome + " !");
+}
+
+public static void EX03_2(){
+    processarCuboNumero();
+}
+
+public static void processarCuboNumero(){
+    mostrarCuboNumero();
+}
+
+public static void mostrarCuboNumero(){
+    int numero = 0;
+    imprimir("Informe um número: ");
+    numero = lerValorInt();
+    imprimir("O cubo do número é: " + Math.pow(numero, 3));
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // TEORIA GERAL DE EUCLIDES PARA NÚMEROS PERFEITOS
     // 2 p−1 ×(2p−1)

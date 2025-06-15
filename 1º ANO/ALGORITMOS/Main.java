@@ -1,4 +1,4 @@
-import utils.*;
+import utils.IO;
 import aula.*;
 
 public class Main{
