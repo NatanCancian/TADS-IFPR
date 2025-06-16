@@ -762,8 +762,89 @@ public static void mostrarCuboNumero(){
     imprimir("O cubo do número é: " + Math.pow(numero, 3));
 }
 
+public static void EX04_2(){
+    processarSegundosPassados();
+}
 
+public static void processarSegundosPassados(){
+    mostrarSegundosPassados();
+}
 
+public static void mostrarSegundosPassados(){
+    int hora_atual = 0;
+    int minuto_atual = 0;
+    int segundo_atual = 0;
+    int total_segundos = 0;
+    imprimir("Informe a hora:");
+    hora_atual = lerValorInt();
+    imprimir("Informe os minutos:");
+    minuto_atual = lerValorInt();
+    imprimir("Informe os segundos:");
+    segundo_atual = lerValorInt();
+
+    total_segundos = (hora_atual * 3600 ) + (minuto_atual * 60) + (segundo_atual);
+
+    imprimir("Passaram cerca de " + total_segundos + "segundos");
+}
+
+public static void EX05_2(){
+    processarRaizes();
+}
+
+public static void processarRaizes(){
+    mostrarRaizes();
+}
+
+public static void mostrarRaizes(){
+    double numero = 0;
+    imprimir("Informe um número:");
+    numero = lerValorDouble();
+    imprimir("A raiz quadrade desse número é: " + Math.sqrt(numero) 
+    + " e a raiz cúbica é: " + Math.cbrt(numero));
+}
+
+public static void EX06_2(){
+    processarCustoLocacao();
+}
+
+public static void processarCustoLocacao(){
+    mostrarCustoLocacao();
+}
+
+public static void mostrarCustoLocacao(){
+    double km_rodados = 0;
+    int dias_locados = 0;
+    double custo = 0;
+    imprimir("Informe quantos KMs foram percorridos com o carro locado:");
+    km_rodados = lerValorDouble();
+    imprimir("Informe quantos dias foram alugados:");
+    dias_locados = lerValorInt();
+    custo = ((km_rodados * 0.15) + (dias_locados * 60));
+    imprimir("O custo total a pagar é: R$ " + custo);
+}
+
+public static void EX07_2(){
+    processarPerimetroAreaRetangulo();
+}
+
+public static void processarPerimetroAreaRetangulo(){
+    mostrarPerimetroAreaRetangulo();
+}
+
+public static void mostrarPerimetroAreaRetangulo(){
+    double base = 0;
+    double altura = 0;
+    double perimetro = 0;
+    double area = 0;
+    imprimir("Informe a base do retângulo:");
+    base = lerValorDouble();
+    imprimir("Informe a altura do retângulo:");
+    altura = lerValorDouble();
+    perimetro = (2 *(base + altura));
+    area = base * altura;
+    imprimir("O perímetro do retângulo é: " + perimetro + " , e a área do retângulo é: " + area);
+  }
+  
 }
 
 
