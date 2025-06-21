@@ -844,8 +844,253 @@ public static void mostrarPerimetroAreaRetangulo(){
     area = base * altura;
     imprimir("O perímetro do retângulo é: " + perimetro + " , e a área do retângulo é: " + area);
   }
-  
+ 
+  public static void EX08_2(){
+    processarRaioCirculo();
+  }
+
+  public static void processarRaioCirculo(){
+    mostrarRaioCirculo();
+  }
+
+  public static void mostrarRaioCirculo(){
+    double perimetro = 0;
+    double raio = 0;
+    double area = 0;
+
+    imprimir("Informe um o raio da circunferência:");
+    raio = lerValorDouble();
+    perimetro = 2 * Math.PI * raio;
+    area  = Math.PI * Math.pow(raio, 2);
+    imprimir("O perímetro da circunferência é: " + perimetro + " , a área da circuferência é: " + area);
+  }
+
+  public static void EX10_2(){
+    processarDesconto();
+  }
+
+  public static void processarDesconto(){
+    mostrarDesconto();
+  }
+
+  public static void mostrarDesconto(){
+    double preco = 0;
+    double desconto = 0;
+    double percentual = 0;
+    imprimir("Informe o preço da mercadoria:");
+    preco = lerValorDouble();
+    imprimir("Informe o percentual(%) de desconto (de 0 a 100): ");
+    desconto = lerValorDouble();
+    if((desconto >= 0) && (desconto < 101)){
+        desconto = desconto / 100;
+        percentual = preco * desconto;
+        preco = preco - percentual;
+        imprimir("A porcentagem desconto é: " + percentual + "% , " + "e o preço a pagar é: " + preco);                
+    }else{
+        imprimir("Desconto fora do percentual permitido!");
+    }
+  }
+
+  public static void EX11_2(){
+    processarAumento();
+  }
+
+  public static void processarAumento(){
+    mostrarAumento();
+  }
+
+  public static void mostrarAumento(){
+    double valor_salario = 0;
+    double porcentagem = 0;
+    double aumento = 0;
+    imprimir("Informe o valor do salário:");
+    valor_salario = lerValorDouble();
+    imprimir("Informe a porcentagem(%) de aumento:");
+    porcentagem = lerValorDouble();
+    porcentagem = porcentagem / 100;
+    aumento = valor_salario * porcentagem;
+    valor_salario += aumento;
+    imprimir("Valor de aumento:" + aumento + ", novo salário: " + valor_salario); 
+  }   
+
+    public static void EX12_2(){
+        processarBoleto();
+    }
+
+    public static void processarBoleto(){
+        mostrarBoleto();
+    }
+
+    public static void mostrarBoleto(){
+        double juros = 0;
+        double valor = 0;
+        int atraso = 0;
+        double valor_total = 0;
+        imprimir("Informe o valor do boleto: ");
+        valor = lerValorDouble();
+        imprimir("Informe o percentual de juros cobrado:");
+        juros = lerValorDouble();
+        imprimir("Informe o número de dias em atraso:");
+        atraso = lerValorInt();
+        valor_total = valor + valor * (juros / 100) * atraso;
+        imprimir("O valor total a ser pago é: " + valor_total);
+    }
+
+    public static void EX13_2(){
+        processarEleicao();
+    }
+
+    public static void processarEleicao(){
+        mostrarEleicao();
+    }
+
+    public static void mostrarEleicao(){
+        double votos_c1 = 0;
+        double votos_c2 = 0;
+        double votos_c3 = 0;
+        double votos_brancos = 0;
+        double votos_nulos = 0;
+        double total_eleitores = 0;
+        imprimir("Informe a quantidade de votos do Candidato 1:");
+        votos_c1 = lerValorInt();
+        imprimir("Informe a quantidade de votos do Candidato 2:");
+        votos_c2 = lerValorInt();
+        imprimir("Informe a quantidade de votos do Candidato 3:");
+        votos_c3 = lerValorInt();
+        imprimir("Informe a quantidade de votos Brancos:");
+        votos_brancos = lerValorInt();
+        imprimir("Informe a quantidade de votos Nulos:");
+        votos_nulos = lerValorInt();
+        total_eleitores = votos_c1 + votos_c2 + votos_c3 + votos_brancos + votos_nulos;
+        imprimir("Total de eleitores: " + total_eleitores);
+        votos_c1 = (votos_c1 / total_eleitores) * 100;
+        votos_c2 = (votos_c2 / total_eleitores) * 100;
+        votos_c3 = (votos_c3 / total_eleitores) * 100;
+        votos_brancos = (votos_brancos / total_eleitores) * 100;
+        votos_nulos = (votos_nulos / total_eleitores) * 100;
+        imprimir("Votos Candidato 1: " + votos_c1 + " %"); 
+        imprimir("Votos Candidato 2: " + votos_c2 + " %"); 
+        imprimir("Votos Candidato 3: " + votos_c3 + " %");
+        imprimir("Votos Brancos: " + votos_brancos + " %"); 
+        imprimir("Votos Nulos: " + votos_nulos + " %");  
+    }
+
+    public static void EX14_2(){
+        processarCustoCarro();
+    }
+
+    public static void processarCustoCarro(){
+        mostrarCustoCarro();
+    }
+
+    public static void mostrarCustoCarro(){
+        double custo = 0;
+        imprimir("Informe o custo do carro:");
+        custo = lerValorDouble();
+        imprimir("O custo do carro é: " + (custo + (custo * 0.28) + (custo * 0.45)));
+    }
+
+    public static void EX15_2(){
+        processarComissaoVendas();
+    }
+
+    public static void processarComissaoVendas(){
+        mostrarComissaoVendas();
+    }
+
+    public static void mostrarComissaoVendas(){
+        double valor_vendas = 0;
+        double salario = 0;
+        double valor_final = 0;
+        imprimir("Informe o salário do vendedor:");
+        salario = lerValorDouble();
+        imprimir("Informe o valor total das vendas do vendedor:");
+        valor_vendas = lerValorDouble();
+        valor_final = salario + (valor_vendas * 0.05);
+        imprimir("O salário do vendedor é: R$ " + valor_final);
+    }
+
+    public static void EX32_2(){
+        processarEquacao2oGrau();
+    }
+
+    public static void processarEquacao2oGrau(){
+        mostrarEquacao2oGrau();
+    }
+
+    public static void mostrarEquacao2oGrau(){
+        double y = 0;
+        double x = 0;
+        double a = 0;
+        double b = 0;
+        double c = 0;
+        imprimir("Informe o valor de a:");
+        a = lerValorDouble();
+        imprimir("Informe o valor de b:");
+        b = lerValorDouble();
+        imprimir("Informe o valor de c:");
+        c = lerValorDouble();
+        imprimir("Informe o valor de x:");
+        x = lerValorDouble();
+        y = a * Math.pow(x, 2) + b * x + c;
+        imprimir("O valor de y é: " + y);
+    }
+
+    public static void EX33_2(){
+        processarBhaskara();
+    }
+
+    public static void processarBhaskara(){
+        mostrarBhaskara();
+    }
+
+    public static void mostrarBhaskara(){
+       double b = 0;
+       double a = 0;
+       double c = 0;
+       double x1 = 0;
+       double x2 = 0;
+       imprimir("Informe o valor de a:");
+       a = lerValorDouble();
+       imprimir("Informe o valor de b:");
+       b = lerValorDouble();
+       imprimir("Informe o valor de c:");
+       c = lerValorDouble();
+       x1 = (-b + Math.sqrt(Math.pow(b, 2) - 4 * a * c))/ 2 * a;
+       x2 = (-b - Math.sqrt(Math.pow(b, 2) - 4 * a * c))/ 2 * a;
+       imprimir("Raiz positiva: " + x1 + " Raiz negativa: " + x2);
+    }
+
+    public static void EX34_2(){
+        processarDistanciaEntrePontos();
+    } 
+
+    public static void processarDistanciaEntrePontos(){
+        mostrarDistanciaEntrePontos();
+    }
+
+    public static void mostrarDistanciaEntrePontos(){
+        double d = 0;
+        double x1 = 0; 
+        double y1 = 0;
+        double x2 = 0;
+        double y2 = 0;
+        imprimir("Informe o valor de x2:");
+        x2 = lerValorDouble();
+        imprimir("Informe o valor de x1:");
+        x1 = lerValorDouble();
+        imprimir("Informe o valor y2:");
+        y2 = lerValorDouble();
+        imprimir("Informe o valor de y1:");
+        y1 = lerValorDouble();        
+        d = Math.sqrt(Math.pow(x2 - x1 , 2) + Math.pow(y2 - y1, 2));
+        imprimir("A distância entre os 2 pontos é: " + d);
+    }
+
+
+
 }
+
 
 
 
