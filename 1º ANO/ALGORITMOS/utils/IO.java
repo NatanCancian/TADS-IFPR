@@ -1,6 +1,8 @@
 package utils;
+
 import java.util.Scanner;
-public class IO{
+
+public class IO {
     public static Scanner entrada = new Scanner(System.in);
 
     public static void imprimir(String texto) {
@@ -673,255 +675,255 @@ public class IO{
         }
     }
 
-    public static void EX28(){
+    public static void EX28() {
         processarSomarInversos();
     }
 
-    public static void processarSomarInversos(){
+    public static void processarSomarInversos() {
         somarInversos();
     }
 
-    public static void somarInversos(){
+    public static void somarInversos() {
         double i = 0;
         int numero = 0;
         double soma = 0;
         imprimir("Informe um número");
         numero = lerValorInt();
 
-        for(i = 1; i <= numero; i++){
-            soma += 1.0/i;   
+        for (i = 1; i <= numero; i++) {
+            soma += 1.0 / i;
         }
         imprimirDouble(soma);
     }
 
-    public static void EX29(){
+    public static void EX29() {
         processarPadraoLinhas();
     }
-    
-    public static void processarPadraoLinhas(){
+
+    public static void processarPadraoLinhas() {
         desenharPadraoLinhas();
     }
 
-    public static void desenharPadraoLinhas(){
+    public static void desenharPadraoLinhas() {
         int i = 0;
         int j = 0;
         int linhas = 0;
         imprimir("Informe um número:");
         linhas = lerValorInt();
-        
-        for(i = 1; i <= linhas; i++){
-           System.out.println();
-            for(j = 1; j <= i; j++){
+
+        for (i = 1; i <= linhas; i++) {
+            System.out.println();
+            for (j = 1; j <= i; j++) {
                 System.out.print("*");
             }
         }
     }
 
-public static void EX01_2(){
-    processarAntecessoresSucessores();
-}
-
-public static void processarAntecessoresSucessores(){
-    mostrarAntecessoresSucessores();
-}
-
-public static void mostrarAntecessoresSucessores(){
-    int numero = 0;
-    imprimir("Informe um número:");
-    numero = lerValorInt();
-    imprimir("O antecessor é: " + (numero-1) + "o valor sucessor é: " + (numero+1));  
-  }
-
-public static void EX02_2(){
-    mostrarBoaTarde();
-}
-
-public static void mostrarBoaTarde(){
-    processarBoaTarde();
-}
-
-public static void processarBoaTarde(){
-    String nome = null;
-    imprimir("Informe seu nome:");
-    nome = lerValorString();
-    imprimir("Boa tarde " + nome + " !");
-}
-
-public static void EX03_2(){
-    processarCuboNumero();
-}
-
-public static void processarCuboNumero(){
-    mostrarCuboNumero();
-}
-
-public static void mostrarCuboNumero(){
-    int numero = 0;
-    imprimir("Informe um número: ");
-    numero = lerValorInt();
-    imprimir("O cubo do número é: " + Math.pow(numero, 3));
-}
-
-public static void EX04_2(){
-    processarSegundosPassados();
-}
-
-public static void processarSegundosPassados(){
-    mostrarSegundosPassados();
-}
-
-public static void mostrarSegundosPassados(){
-    int hora_atual = 0;
-    int minuto_atual = 0;
-    int segundo_atual = 0;
-    int total_segundos = 0;
-    imprimir("Informe a hora:");
-    hora_atual = lerValorInt();
-    imprimir("Informe os minutos:");
-    minuto_atual = lerValorInt();
-    imprimir("Informe os segundos:");
-    segundo_atual = lerValorInt();
-
-    total_segundos = (hora_atual * 3600 ) + (minuto_atual * 60) + (segundo_atual);
-
-    imprimir("Passaram cerca de " + total_segundos + "segundos");
-}
-
-public static void EX05_2(){
-    processarRaizes();
-}
-
-public static void processarRaizes(){
-    mostrarRaizes();
-}
-
-public static void mostrarRaizes(){
-    double numero = 0;
-    imprimir("Informe um número:");
-    numero = lerValorDouble();
-    imprimir("A raiz quadrade desse número é: " + Math.sqrt(numero) 
-    + " e a raiz cúbica é: " + Math.cbrt(numero));
-}
-
-public static void EX06_2(){
-    processarCustoLocacao();
-}
-
-public static void processarCustoLocacao(){
-    mostrarCustoLocacao();
-}
-
-public static void mostrarCustoLocacao(){
-    double km_rodados = 0;
-    int dias_locados = 0;
-    double custo = 0;
-    imprimir("Informe quantos KMs foram percorridos com o carro locado:");
-    km_rodados = lerValorDouble();
-    imprimir("Informe quantos dias foram alugados:");
-    dias_locados = lerValorInt();
-    custo = ((km_rodados * 0.15) + (dias_locados * 60));
-    imprimir("O custo total a pagar é: R$ " + custo);
-}
-
-public static void EX07_2(){
-    processarPerimetroAreaRetangulo();
-}
-
-public static void processarPerimetroAreaRetangulo(){
-    mostrarPerimetroAreaRetangulo();
-}
-
-public static void mostrarPerimetroAreaRetangulo(){
-    double base = 0;
-    double altura = 0;
-    double perimetro = 0;
-    double area = 0;
-    imprimir("Informe a base do retângulo:");
-    base = lerValorDouble();
-    imprimir("Informe a altura do retângulo:");
-    altura = lerValorDouble();
-    perimetro = (2 *(base + altura));
-    area = base * altura;
-    imprimir("O perímetro do retângulo é: " + perimetro + " , e a área do retângulo é: " + area);
-  }
- 
-  public static void EX08_2(){
-    processarRaioCirculo();
-  }
-
-  public static void processarRaioCirculo(){
-    mostrarRaioCirculo();
-  }
-
-  public static void mostrarRaioCirculo(){
-    double perimetro = 0;
-    double raio = 0;
-    double area = 0;
-
-    imprimir("Informe um o raio da circunferência:");
-    raio = lerValorDouble();
-    perimetro = 2 * Math.PI * raio;
-    area  = Math.PI * Math.pow(raio, 2);
-    imprimir("O perímetro da circunferência é: " + perimetro + " , a área da circuferência é: " + area);
-  }
-
-  public static void EX10_2(){
-    processarDesconto();
-  }
-
-  public static void processarDesconto(){
-    mostrarDesconto();
-  }
-
-  public static void mostrarDesconto(){
-    double preco = 0;
-    double desconto = 0;
-    double percentual = 0;
-    imprimir("Informe o preço da mercadoria:");
-    preco = lerValorDouble();
-    imprimir("Informe o percentual(%) de desconto (de 0 a 100): ");
-    desconto = lerValorDouble();
-    if((desconto >= 0) && (desconto < 101)){
-        desconto = desconto / 100;
-        percentual = preco * desconto;
-        preco = preco - percentual;
-        imprimir("A porcentagem desconto é: " + percentual + "% , " + "e o preço a pagar é: " + preco);                
-    }else{
-        imprimir("Desconto fora do percentual permitido!");
+    public static void EX01_2() {
+        processarAntecessoresSucessores();
     }
-  }
 
-  public static void EX11_2(){
-    processarAumento();
-  }
+    public static void processarAntecessoresSucessores() {
+        mostrarAntecessoresSucessores();
+    }
 
-  public static void processarAumento(){
-    mostrarAumento();
-  }
+    public static void mostrarAntecessoresSucessores() {
+        int numero = 0;
+        imprimir("Informe um número:");
+        numero = lerValorInt();
+        imprimir("O antecessor é: " + (numero - 1) + "o valor sucessor é: " + (numero + 1));
+    }
 
-  public static void mostrarAumento(){
-    double valor_salario = 0;
-    double porcentagem = 0;
-    double aumento = 0;
-    imprimir("Informe o valor do salário:");
-    valor_salario = lerValorDouble();
-    imprimir("Informe a porcentagem(%) de aumento:");
-    porcentagem = lerValorDouble();
-    porcentagem = porcentagem / 100;
-    aumento = valor_salario * porcentagem;
-    valor_salario += aumento;
-    imprimir("Valor de aumento:" + aumento + ", novo salário: " + valor_salario); 
-  }   
+    public static void EX02_2() {
+        mostrarBoaTarde();
+    }
 
-    public static void EX12_2(){
+    public static void mostrarBoaTarde() {
+        processarBoaTarde();
+    }
+
+    public static void processarBoaTarde() {
+        String nome = null;
+        imprimir("Informe seu nome:");
+        nome = lerValorString();
+        imprimir("Boa tarde " + nome + " !");
+    }
+
+    public static void EX03_2() {
+        processarCuboNumero();
+    }
+
+    public static void processarCuboNumero() {
+        mostrarCuboNumero();
+    }
+
+    public static void mostrarCuboNumero() {
+        int numero = 0;
+        imprimir("Informe um número: ");
+        numero = lerValorInt();
+        imprimir("O cubo do número é: " + Math.pow(numero, 3));
+    }
+
+    public static void EX04_2() {
+        processarSegundosPassados();
+    }
+
+    public static void processarSegundosPassados() {
+        mostrarSegundosPassados();
+    }
+
+    public static void mostrarSegundosPassados() {
+        int hora_atual = 0;
+        int minuto_atual = 0;
+        int segundo_atual = 0;
+        int total_segundos = 0;
+        imprimir("Informe a hora:");
+        hora_atual = lerValorInt();
+        imprimir("Informe os minutos:");
+        minuto_atual = lerValorInt();
+        imprimir("Informe os segundos:");
+        segundo_atual = lerValorInt();
+
+        total_segundos = (hora_atual * 3600) + (minuto_atual * 60) + (segundo_atual);
+
+        imprimir("Passaram cerca de " + total_segundos + "segundos");
+    }
+
+    public static void EX05_2() {
+        processarRaizes();
+    }
+
+    public static void processarRaizes() {
+        mostrarRaizes();
+    }
+
+    public static void mostrarRaizes() {
+        double numero = 0;
+        imprimir("Informe um número:");
+        numero = lerValorDouble();
+        imprimir("A raiz quadrade desse número é: " + Math.sqrt(numero)
+                + " e a raiz cúbica é: " + Math.cbrt(numero));
+    }
+
+    public static void EX06_2() {
+        processarCustoLocacao();
+    }
+
+    public static void processarCustoLocacao() {
+        mostrarCustoLocacao();
+    }
+
+    public static void mostrarCustoLocacao() {
+        double km_rodados = 0;
+        int dias_locados = 0;
+        double custo = 0;
+        imprimir("Informe quantos KMs foram percorridos com o carro locado:");
+        km_rodados = lerValorDouble();
+        imprimir("Informe quantos dias foram alugados:");
+        dias_locados = lerValorInt();
+        custo = ((km_rodados * 0.15) + (dias_locados * 60));
+        imprimir("O custo total a pagar é: R$ " + custo);
+    }
+
+    public static void EX07_2() {
+        processarPerimetroAreaRetangulo();
+    }
+
+    public static void processarPerimetroAreaRetangulo() {
+        mostrarPerimetroAreaRetangulo();
+    }
+
+    public static void mostrarPerimetroAreaRetangulo() {
+        double base = 0;
+        double altura = 0;
+        double perimetro = 0;
+        double area = 0;
+        imprimir("Informe a base do retângulo:");
+        base = lerValorDouble();
+        imprimir("Informe a altura do retângulo:");
+        altura = lerValorDouble();
+        perimetro = (2 * (base + altura));
+        area = base * altura;
+        imprimir("O perímetro do retângulo é: " + perimetro + " , e a área do retângulo é: " + area);
+    }
+
+    public static void EX08_2() {
+        processarRaioCirculo();
+    }
+
+    public static void processarRaioCirculo() {
+        mostrarRaioCirculo();
+    }
+
+    public static void mostrarRaioCirculo() {
+        double perimetro = 0;
+        double raio = 0;
+        double area = 0;
+
+        imprimir("Informe um o raio da circunferência:");
+        raio = lerValorDouble();
+        perimetro = 2 * Math.PI * raio;
+        area = Math.PI * Math.pow(raio, 2);
+        imprimir("O perímetro da circunferência é: " + perimetro + " , a área da circuferência é: " + area);
+    }
+
+    public static void EX10_2() {
+        processarDesconto();
+    }
+
+    public static void processarDesconto() {
+        mostrarDesconto();
+    }
+
+    public static void mostrarDesconto() {
+        double preco = 0;
+        double desconto = 0;
+        double percentual = 0;
+        imprimir("Informe o preço da mercadoria:");
+        preco = lerValorDouble();
+        imprimir("Informe o percentual(%) de desconto (de 0 a 100): ");
+        desconto = lerValorDouble();
+        if ((desconto >= 0) && (desconto < 101)) {
+            desconto = desconto / 100;
+            percentual = preco * desconto;
+            preco = preco - percentual;
+            imprimir("A porcentagem desconto é: " + percentual + "% , " + "e o preço a pagar é: " + preco);
+        } else {
+            imprimir("Desconto fora do percentual permitido!");
+        }
+    }
+
+    public static void EX11_2() {
+        processarAumento();
+    }
+
+    public static void processarAumento() {
+        mostrarAumento();
+    }
+
+    public static void mostrarAumento() {
+        double valor_salario = 0;
+        double porcentagem = 0;
+        double aumento = 0;
+        imprimir("Informe o valor do salário:");
+        valor_salario = lerValorDouble();
+        imprimir("Informe a porcentagem(%) de aumento:");
+        porcentagem = lerValorDouble();
+        porcentagem = porcentagem / 100;
+        aumento = valor_salario * porcentagem;
+        valor_salario += aumento;
+        imprimir("Valor de aumento:" + aumento + ", novo salário: " + valor_salario);
+    }
+
+    public static void EX12_2() {
         processarBoleto();
     }
 
-    public static void processarBoleto(){
+    public static void processarBoleto() {
         mostrarBoleto();
     }
 
-    public static void mostrarBoleto(){
+    public static void mostrarBoleto() {
         double juros = 0;
         double valor = 0;
         int atraso = 0;
@@ -936,15 +938,15 @@ public static void mostrarPerimetroAreaRetangulo(){
         imprimir("O valor total a ser pago é: " + valor_total);
     }
 
-    public static void EX13_2(){
+    public static void EX13_2() {
         processarEleicao();
     }
 
-    public static void processarEleicao(){
+    public static void processarEleicao() {
         mostrarEleicao();
     }
 
-    public static void mostrarEleicao(){
+    public static void mostrarEleicao() {
         double votos_c1 = 0;
         double votos_c2 = 0;
         double votos_c3 = 0;
@@ -968,37 +970,37 @@ public static void mostrarPerimetroAreaRetangulo(){
         votos_c3 = (votos_c3 / total_eleitores) * 100;
         votos_brancos = (votos_brancos / total_eleitores) * 100;
         votos_nulos = (votos_nulos / total_eleitores) * 100;
-        imprimir("Votos Candidato 1: " + votos_c1 + " %"); 
-        imprimir("Votos Candidato 2: " + votos_c2 + " %"); 
+        imprimir("Votos Candidato 1: " + votos_c1 + " %");
+        imprimir("Votos Candidato 2: " + votos_c2 + " %");
         imprimir("Votos Candidato 3: " + votos_c3 + " %");
-        imprimir("Votos Brancos: " + votos_brancos + " %"); 
-        imprimir("Votos Nulos: " + votos_nulos + " %");  
+        imprimir("Votos Brancos: " + votos_brancos + " %");
+        imprimir("Votos Nulos: " + votos_nulos + " %");
     }
 
-    public static void EX14_2(){
+    public static void EX14_2() {
         processarCustoCarro();
     }
 
-    public static void processarCustoCarro(){
+    public static void processarCustoCarro() {
         mostrarCustoCarro();
     }
 
-    public static void mostrarCustoCarro(){
+    public static void mostrarCustoCarro() {
         double custo = 0;
         imprimir("Informe o custo do carro:");
         custo = lerValorDouble();
         imprimir("O custo do carro é: " + (custo + (custo * 0.28) + (custo * 0.45)));
     }
 
-    public static void EX15_2(){
+    public static void EX15_2() {
         processarComissaoVendas();
     }
 
-    public static void processarComissaoVendas(){
+    public static void processarComissaoVendas() {
         mostrarComissaoVendas();
     }
 
-    public static void mostrarComissaoVendas(){
+    public static void mostrarComissaoVendas() {
         double valor_vendas = 0;
         double salario = 0;
         double valor_final = 0;
@@ -1010,15 +1012,15 @@ public static void mostrarPerimetroAreaRetangulo(){
         imprimir("O salário do vendedor é: R$ " + valor_final);
     }
 
-    public static void EX32_2(){
+    public static void EX32_2() {
         processarEquacao2oGrau();
     }
 
-    public static void processarEquacao2oGrau(){
+    public static void processarEquacao2oGrau() {
         mostrarEquacao2oGrau();
     }
 
-    public static void mostrarEquacao2oGrau(){
+    public static void mostrarEquacao2oGrau() {
         double y = 0;
         double x = 0;
         double a = 0;
@@ -1036,42 +1038,42 @@ public static void mostrarPerimetroAreaRetangulo(){
         imprimir("O valor de y é: " + y);
     }
 
-    public static void EX33_2(){
+    public static void EX33_2() {
         processarBhaskara();
     }
 
-    public static void processarBhaskara(){
+    public static void processarBhaskara() {
         mostrarBhaskara();
     }
 
-    public static void mostrarBhaskara(){
-       double b = 0;
-       double a = 0;
-       double c = 0;
-       double x1 = 0;
-       double x2 = 0;
-       imprimir("Informe o valor de a:");
-       a = lerValorDouble();
-       imprimir("Informe o valor de b:");
-       b = lerValorDouble();
-       imprimir("Informe o valor de c:");
-       c = lerValorDouble();
-       x1 = (-b + Math.sqrt(Math.pow(b, 2) - 4 * a * c))/ 2 * a;
-       x2 = (-b - Math.sqrt(Math.pow(b, 2) - 4 * a * c))/ 2 * a;
-       imprimir("Raiz positiva: " + x1 + " Raiz negativa: " + x2);
+    public static void mostrarBhaskara() {
+        double b = 0;
+        double a = 0;
+        double c = 0;
+        double x1 = 0;
+        double x2 = 0;
+        imprimir("Informe o valor de a:");
+        a = lerValorDouble();
+        imprimir("Informe o valor de b:");
+        b = lerValorDouble();
+        imprimir("Informe o valor de c:");
+        c = lerValorDouble();
+        x1 = (-b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / 2 * a;
+        x2 = (-b - Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / 2 * a;
+        imprimir("Raiz positiva: " + x1 + " Raiz negativa: " + x2);
     }
 
-    public static void EX34_2(){
+    public static void EX34_2() {
         processarDistanciaEntrePontos();
-    } 
+    }
 
-    public static void processarDistanciaEntrePontos(){
+    public static void processarDistanciaEntrePontos() {
         mostrarDistanciaEntrePontos();
     }
 
-    public static void mostrarDistanciaEntrePontos(){
+    public static void mostrarDistanciaEntrePontos() {
         double d = 0;
-        double x1 = 0; 
+        double x1 = 0;
         double y1 = 0;
         double x2 = 0;
         double y2 = 0;
@@ -1082,243 +1084,229 @@ public static void mostrarPerimetroAreaRetangulo(){
         imprimir("Informe o valor y2:");
         y2 = lerValorDouble();
         imprimir("Informe o valor de y1:");
-        y1 = lerValorDouble();        
-        d = Math.sqrt(Math.pow(x2 - x1 , 2) + Math.pow(y2 - y1, 2));
+        y1 = lerValorDouble();
+        d = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
         imprimir("A distância entre os 2 pontos é: " + d);
     }
 
-public static void EX35_2(){
-    processarGrausParaRadianos();
+    public static void EX35_2() {
+        processarGrausParaRadianos();
+    }
+
+    public static void processarGrausParaRadianos() {
+        mostrarGrausParaRadianos();
+    }
+
+    public static void mostrarGrausParaRadianos() {
+        double graus = 0;
+        double radianos = 0;
+        imprimir("Insira o valor em graus ° :");
+        graus = lerValorDouble();
+        radianos = graus * (Math.PI / 180);
+        imprimir("Valor em graus ° : " + graus + " Valor em radianos (rad) : " + radianos);
+    }
+
+    public static void EX36_2() {
+        processarMediasVariadas();
+    }
+
+    public static void processarMediasVariadas() {
+        mostrarMediasVariadas();
+    }
+
+    public static void mostrarMediasVariadas() {
+        double a = 0;
+        double b = 0;
+        double c = 0;
+        double d = 0;
+        int n = 4;
+        double media_aritmetica = 0;
+        double media_harmonica = 0;
+        double media_geometrica = 0;
+        double media_quadratica = 0;
+        imprimir("Informe o valor de a:");
+        a = lerValorDouble();
+        imprimir("Informe o valor de b:");
+        b = lerValorDouble();
+        imprimir("Informe o valor de c:");
+        c = lerValorDouble();
+        imprimir("Informe o valor de d:");
+        d = lerValorDouble();
+        media_aritmetica = ((a + b + c + d) / n);
+        media_harmonica = n / ((1 / a) + (1 / b) + (1 / c) + (1 / d));
+        media_geometrica = Math.sqrt(Math.sqrt((a * b * c * d)));
+        media_quadratica = Math.sqrt((a * a + b * b + c * c + d * d) / n);
+        imprimir("Média Aritmética: " + media_aritmetica);
+        imprimir("Média Harmônica: " + media_harmonica);
+        imprimir("Média Geométrica: " + media_geometrica);
+        imprimir("Média Quadrática: " + media_quadratica);
+    }
+
+    public static void EX37_2() {
+        processarCelsiusParaFahrenheit();
+    }
+
+    public static void processarCelsiusParaFahrenheit() {
+        mostrarCelsiusParaFahrenheit();
+    }
+
+    public static void mostrarCelsiusParaFahrenheit() {
+        double celsius = 0;
+        double fahrenheit = 0;
+        imprimir("Informe a temperatura em graus Celsius °C:");
+        celsius = lerValorDouble();
+        fahrenheit = (celsius * 9 / 5) + 32;
+        imprimir("A temperatura em Fahrenheit é: " + fahrenheit + " °F");
+    }
+
+    public static void EX38_2() {
+        processarCelsiusParaKelvin();
+    }
+
+    public static void processarCelsiusParaKelvin() {
+        mostrarCelsiusParaKelvin();
+    }
+
+    public static void mostrarCelsiusParaKelvin() {
+        double celsius = 0;
+        double kelvin = 0;
+        imprimir("Informe a temperatura em graus Celsius °C:");
+        celsius = lerValorDouble();
+        kelvin = celsius + 273.15;
+        imprimir("A temperatura em Kelvin é: " + kelvin + " °K");
+    }
+
+    public static void EX39_2() {
+        processarDuracaoPartida();
+    }
+
+    public static void processarDuracaoPartida() {
+        mostrarDuracaoPartida();
+    }
+
+    public static void mostrarDuracaoPartida() {
+        int hora_inicial = 0;
+        int minuto_inicial = 0;
+        int hora_final = 0;
+        int minuto_final = 0;
+        int minutos_inicio = 0;
+        int minutos_fim = 0;
+        int duracao = 0;
+        int horas = 0;
+        int minutos = 0;
+        imprimir("Insira a hora inicial da partida:");
+        hora_inicial = lerValorInt();
+        imprimir("Insira os minutos do início da partida:");
+        minuto_inicial = lerValorInt();
+        imprimir("Insira a hora final da partida:");
+        hora_final = lerValorInt();
+        imprimir("Insira os minutos do final da partida:");
+        minuto_final = lerValorInt();
+        minutos_inicio = hora_inicial * 60 + minuto_inicial;
+        minutos_fim = hora_final * 60 + minuto_final;
+        duracao = minutos_fim - minutos_inicio;
+        horas = duracao / 60;
+        minutos = duracao % 60;
+        imprimir("A duração total do jogo foi: " + horas + " horas, e " + minutos + " minutos");
+    }
+
+    public static void EX01_selecao() {
+        processarMenorNumero();
+    }
+
+    public static void processarMenorNumero() {
+        mostrarMenorNumero();
+    }
+
+    public static void mostrarMenorNumero() {
+        int numero1 = 0;
+        int numero2 = 0;
+        imprimir("Informe um número:");
+        numero1 = lerValorInt();
+        imprimir("Informe outro número:");
+        numero2 = lerValorInt();
+
+        if (numero1 == numero2) {
+            imprimir("Números iguais");
+        } else {
+            if (numero1 < numero2) {
+                imprimir("Número menor: " + numero1);
+            } else {
+                imprimir("Número menor: " + numero2);
+            }
+        }
+    }
+
+    public static void EX02_selecao() {
+        processarMaiorNumero();
+    }
+
+    public static void processarMaiorNumero() {
+        mostrarMaiorNumero();
+    }
+
+    public static void mostrarMaiorNumero() {
+        int numero1 = 0;
+        int numero2 = 0;
+        imprimir("Informe um número:");
+        numero1 = lerValorInt();
+        imprimir("Informe outro número:");
+        numero2 = lerValorInt();
+
+        if (numero1 == numero2) {
+            imprimir("Números iguais");
+        } else {
+            if (numero1 > numero2) {
+                imprimir("Número maior: " + numero1);
+            } else {
+                imprimir("Número maior: " + numero2);
+            }
+        }
+    }
+
+    public static void EX03_selecao() {
+        processarMaiorNumero3();
+    }
+
+    public static void processarMaiorNumero3() {
+        mostrarMaiorNumero3();
+    }
+
+    public static void mostrarMaiorNumero3() {
+        int numero1 = 0;
+        int numero2 = 0;
+        int numero3 = 0;
+        imprimir("Informe um número:");
+        numero1 = lerValorInt();
+        imprimir("Informe outro número:");
+        numero2 = lerValorInt();
+        imprimir("Informe outro número:");
+        numero3 = lerValorInt();
+
+        if ((numero1 == numero2) && (numero1 == numero3) && (numero2 == numero3)) {
+            imprimir("Números iguais");
+        } else {
+            if ((numero1 > numero2) && (numero1 > numero3)) {
+                imprimir("Número maior: " + numero1);
+            } else if ((numero2 > numero1) && (numero2 > numero3)) {
+                imprimir("Número maior: " + numero2);
+            } else if ((numero3 > numero1) && (numero3 > numero2)) {
+                imprimir("Número maior: " + numero3);
+            }
+        }
+
+        if ((numero1 < numero2) && (numero1 < numero3)) {
+            imprimir("Número menor: " + numero1);
+        } else if ((numero2 < numero1) && (numero2 < numero3)) {
+            imprimir("Número menor: " + numero2);
+        } else if ((numero3 < numero1) && (numero3 < numero2)) {
+            imprimir("Número menor: " + numero3);
+        }
+    }
+
+
+    
 }
 
-public static void processarGrausParaRadianos(){
-    mostrarGrausParaRadianos();
-}
-
-public static void mostrarGrausParaRadianos(){
-    double graus = 0;
-    double radianos = 0;
-    imprimir("Insira o valor em graus ° :");
-    graus = lerValorDouble();
-    radianos = graus * (Math.PI/180);
-    imprimir("Valor em graus ° : " + graus + " Valor em radianos (rad) : " + radianos);
-}
-
-public static void EX36_2(){
-    processarMediasVariadas();
-}
-
-public static void processarMediasVariadas(){
-    mostrarMediasVariadas();
-}
-
-public static void mostrarMediasVariadas(){
-    double a = 0;
-    double b = 0;
-    double c = 0;
-    double d = 0;
-    int n = 4;
-    double media_aritmetica = 0;
-    double media_harmonica = 0;
-    double media_geometrica = 0;
-    double media_quadratica = 0;
-    imprimir("Informe o valor de a:");
-    a = lerValorDouble();
-    imprimir("Informe o valor de b:");
-    b = lerValorDouble();
-    imprimir("Informe o valor de c:");
-    c = lerValorDouble();
-    imprimir("Informe o valor de d:");
-    d = lerValorDouble();
-    media_aritmetica = ((a + b + c + d)/n);
-    media_harmonica = n / ((1/a) + (1/b) + (1/c) + (1/d));
-    media_geometrica = Math.sqrt(Math.sqrt((a * b * c * d)));
-    media_quadratica = Math.sqrt((a*a + b*b + c*c + d*d)/n);
-    imprimir("Média Aritmética: " + media_aritmetica);
-    imprimir("Média Harmônica: " + media_harmonica);
-    imprimir("Média Geométrica: " + media_geometrica);
-    imprimir("Média Quadrática: " + media_quadratica);
-}
-
-public static void EX37_2(){
-    processarCelsiusParaFahrenheit();
-}
-
-public static void processarCelsiusParaFahrenheit(){
-     mostrarCelsiusParaFahrenheit();
-}
-
-public static void  mostrarCelsiusParaFahrenheit(){
-    double celsius = 0;
-    double fahrenheit = 0;
-    imprimir("Informe a temperatura em graus Celsius °C:");
-    celsius = lerValorDouble(); 
-    fahrenheit = (celsius * 9/5) + 32;
-    imprimir("A temperatura em Fahrenheit é: " + fahrenheit + " °F");
-}
-
-public static void EX38_2(){
-    processarCelsiusParaKelvin();
-}
-
-public static void processarCelsiusParaKelvin(){
-    mostrarCelsiusParaKelvin();
-}
-
-public static void mostrarCelsiusParaKelvin(){
-    double celsius = 0;
-    double kelvin = 0;
-    imprimir("Informe a temperatura em graus Celsius °C:");
-    celsius = lerValorDouble(); 
-    kelvin = celsius + 273.15;
-    imprimir("A temperatura em Kelvin é: " + kelvin + " °K");
-}
-
-public static void EX39_2(){
-    processarDuracaoPartida();
-}
-
-public static void processarDuracaoPartida(){
-    mostrarDuracaoPartida();
-}
-
-public static void mostrarDuracaoPartida(){
-    int hora_inicial = 0;
-    int minuto_inicial = 0;
-    int hora_final = 0;
-    int minuto_final = 0;
-    int minutos_inicio = 0;
-    int minutos_fim = 0;
-    int duracao = 0;
-    int horas = 0; 
-    int minutos = 0;
-    imprimir("Insira a hora inicial da partida:");
-    hora_inicial = lerValorInt();
-    imprimir("Insira os minutos do início da partida:");
-    minuto_inicial = lerValorInt();
-    imprimir("Insira a hora final da partida:");
-    hora_final = lerValorInt();
-    imprimir("Insira os minutos do final da partida:");
-    minuto_final = lerValorInt();
-    minutos_inicio = hora_inicial * 60 + minuto_inicial;
-    minutos_fim = hora_final * 60 + minuto_final;
-    duracao = minutos_fim - minutos_inicio;
-    horas = duracao / 60;
-    minutos = duracao % 60; 
-    imprimir("A duração total do jogo foi: " + horas + " horas, e " + minutos + " minutos"); 
-  }
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // TEORIA GERAL DE EUCLIDES PARA NÚMEROS PERFEITOS
-    // 2 p−1 ×(2p−1)
+// TEORIA GERAL DE EUCLIDES PARA NÚMEROS PERFEITOS
+// 2 p−1 ×(2p−1)
