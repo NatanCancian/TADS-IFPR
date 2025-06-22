@@ -1,7 +1,7 @@
-package lista2;
+package lista_expressoes;
 import utils.IO;
-public class EX14 {
+public class EX07 {
     public static void main(String[] args) {
-        IO.EX14_2();
+        IO.EX07_2();
     }
 }

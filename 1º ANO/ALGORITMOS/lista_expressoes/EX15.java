@@ -1,4 +1,4 @@
-package lista2;
+package lista_expressoes;
 import utils.IO;
 public class EX15 {
     public static void main(String[] args) {

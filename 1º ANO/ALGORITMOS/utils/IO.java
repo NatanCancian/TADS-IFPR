@@ -1087,6 +1087,127 @@ public static void mostrarPerimetroAreaRetangulo(){
         imprimir("A distância entre os 2 pontos é: " + d);
     }
 
+public static void EX35_2(){
+    processarGrausParaRadianos();
+}
+
+public static void processarGrausParaRadianos(){
+    mostrarGrausParaRadianos();
+}
+
+public static void mostrarGrausParaRadianos(){
+    double graus = 0;
+    double radianos = 0;
+    imprimir("Insira o valor em graus ° :");
+    graus = lerValorDouble();
+    radianos = graus * (Math.PI/180);
+    imprimir("Valor em graus ° : " + graus + " Valor em radianos (rad) : " + radianos);
+}
+
+public static void EX36_2(){
+    processarMediasVariadas();
+}
+
+public static void processarMediasVariadas(){
+    mostrarMediasVariadas();
+}
+
+public static void mostrarMediasVariadas(){
+    double a = 0;
+    double b = 0;
+    double c = 0;
+    double d = 0;
+    int n = 4;
+    double media_aritmetica = 0;
+    double media_harmonica = 0;
+    double media_geometrica = 0;
+    double media_quadratica = 0;
+    imprimir("Informe o valor de a:");
+    a = lerValorDouble();
+    imprimir("Informe o valor de b:");
+    b = lerValorDouble();
+    imprimir("Informe o valor de c:");
+    c = lerValorDouble();
+    imprimir("Informe o valor de d:");
+    d = lerValorDouble();
+    media_aritmetica = ((a + b + c + d)/n);
+    media_harmonica = n / ((1/a) + (1/b) + (1/c) + (1/d));
+    media_geometrica = Math.sqrt(Math.sqrt((a * b * c * d)));
+    media_quadratica = Math.sqrt((a*a + b*b + c*c + d*d)/n);
+    imprimir("Média Aritmética: " + media_aritmetica);
+    imprimir("Média Harmônica: " + media_harmonica);
+    imprimir("Média Geométrica: " + media_geometrica);
+    imprimir("Média Quadrática: " + media_quadratica);
+}
+
+public static void EX37_2(){
+    processarCelsiusParaFahrenheit();
+}
+
+public static void processarCelsiusParaFahrenheit(){
+     mostrarCelsiusParaFahrenheit();
+}
+
+public static void  mostrarCelsiusParaFahrenheit(){
+    double celsius = 0;
+    double fahrenheit = 0;
+    imprimir("Informe a temperatura em graus Celsius °C:");
+    celsius = lerValorDouble(); 
+    fahrenheit = (celsius * 9/5) + 32;
+    imprimir("A temperatura em Fahrenheit é: " + fahrenheit + " °F");
+}
+
+public static void EX38_2(){
+    processarCelsiusParaKelvin();
+}
+
+public static void processarCelsiusParaKelvin(){
+    mostrarCelsiusParaKelvin();
+}
+
+public static void mostrarCelsiusParaKelvin(){
+    double celsius = 0;
+    double kelvin = 0;
+    imprimir("Informe a temperatura em graus Celsius °C:");
+    celsius = lerValorDouble(); 
+    kelvin = celsius + 273.15;
+    imprimir("A temperatura em Kelvin é: " + kelvin + " °K");
+}
+
+public static void EX39_2(){
+    processarDuracaoPartida();
+}
+
+public static void processarDuracaoPartida(){
+    mostrarDuracaoPartida();
+}
+
+public static void mostrarDuracaoPartida(){
+    int hora_inicial = 0;
+    int minuto_inicial = 0;
+    int hora_final = 0;
+    int minuto_final = 0;
+    int minutos_inicio = 0;
+    int minutos_fim = 0;
+    int duracao = 0;
+    int horas = 0; 
+    int minutos = 0;
+    imprimir("Insira a hora inicial da partida:");
+    hora_inicial = lerValorInt();
+    imprimir("Insira os minutos do início da partida:");
+    minuto_inicial = lerValorInt();
+    imprimir("Insira a hora final da partida:");
+    hora_final = lerValorInt();
+    imprimir("Insira os minutos do final da partida:");
+    minuto_final = lerValorInt();
+    minutos_inicio = hora_inicial * 60 + minuto_inicial;
+    minutos_fim = hora_final * 60 + minuto_final;
+    duracao = minutos_fim - minutos_inicio;
+    horas = duracao / 60;
+    minutos = duracao % 60; 
+    imprimir("A duração total do jogo foi: " + horas + " horas, e " + minutos + " minutos"); 
+  }
+
 
 
 }
