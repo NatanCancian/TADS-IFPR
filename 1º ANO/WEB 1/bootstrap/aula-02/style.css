@@ -1,0 +1,52 @@
+
+:root{
+    --tech-primary: #0d6efd;
+    --tech-dark: #0a1f44;
+    --tech-light: #f8f9fa;
+    --tech-soft: #8ac7eb;
+    
+}
+
+body {
+    background-color: var(--tech-light);
+    color: #333;
+}
+
+.navbar{
+    background-color: var(--tech-dark);
+}
+
+.navbar-expand-lg{
+    background-color: var(--tech-dark);
+    color: var(--tech-light);
+}
+
+.navbar-brand, .nav-link{
+    color: var(--tech-light);   
+}
+
+.nav-link{
+    color: var(--tech-light);
+} 
+
+.hero {
+    background-color: #0d6efd;
+    padding: 100px;
+}
+
+h1.display-4 {
+    color: var(--tech-light);
+}
+
+p.lead {
+    color: var(--tech-light);
+}
+
+section#servicos, section#blog, section#faq, section#contato{
+    background-color: lightcyan;
+}
+
+footer{
+    background-color: var(--tech-dark);
+    color: var(--tech-light);
+}
