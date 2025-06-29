@@ -51,3 +51,15 @@ body{
 .botao:hover{
     background-color: lightseagreen;
 }
+
+.botao#igual:hover{
+    background-color: springgreen;
+}
+
+.botao#apagar:hover{
+    background-color: #ffff00;
+}
+
+.botao#c:hover{
+    background-color: crimson;
+}

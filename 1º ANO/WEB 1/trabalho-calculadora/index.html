@@ -15,8 +15,8 @@
         <table>
             
             <tr>
-                <td><button class="botao" onclick="limpar()" value="C">C</button></td>
-                <td><button class="botao" onclick="apagar()" value="←">&larr;</button></td>
+                <td><button class="botao" id="c" onclick="limpar()" value="C">C</button></td>
+                <td><button class="botao" id="apagar" onclick="apagar()" value="←">&larr;</button></td>
                 <td><button class="botao" onclick="insert('/')" value="/">÷</button></td>
                 <td><button class="botao" onclick="insert('*')" value="*">X</button></td>
             </tr>
@@ -36,7 +36,7 @@
                 <td><button class="botao" onclick="insert(1)" value="1">1</button></td>
                 <td><button class="botao" onclick="insert(2)" value="2">2</button></td>
                 <td><button class="botao" onclick="insert(3)" value="3">3</button></td>
-                <td rowspan="2"><button class="botao" style="height:109px;" onclick="calcular()" value="=">=</button></td>
+                <td rowspan="2"><button class="botao" id="igual" style="height:109px;" onclick="calcular()" value="=">=</button></td>
             </tr>
             <tr>
                 <td colspan="2"><button class="botao" style="width: 109px;" onclick="insert(0)" value="0">0</button></td>
