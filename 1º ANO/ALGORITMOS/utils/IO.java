@@ -1530,7 +1530,44 @@ public class IO {
         }        
     }
 
+    public static void EX09_selecao(){
+        processarOperadores();
+    }
 
+    public static void processarOperadores(){
+        mostrarOperadores();
+    }
+
+    public static void mostrarOperadores(){
+        int valor1 = 0;
+        int valor2 = 0; 
+        char operador = ' ';
+
+        imprimir("Informe um valor:");
+        valor1 = lerValorInt();
+
+        imprimir("Informe outro valor:");
+        valor2 = lerValorInt();
+
+        imprimir("Informe um operador:");
+        operador = lerValorChar();
+
+        if(operador == '*'){
+            imprimeInt(valor1 * valor2);
+        }
+
+        if(operador == '/'){
+            imprimeInt(valor1 / valor2);
+        }
+
+        if(operador == '+'){
+            imprimeInt(valor1 + valor2);
+        }
+
+        if(operador == '-'){
+            imprimeInt(valor1 - valor2);
+        }
+    }
 
 }
 
