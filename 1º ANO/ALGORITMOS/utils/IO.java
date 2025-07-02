@@ -1304,8 +1304,234 @@ public class IO {
         }
     }
 
+    public static void EX04_selecao() {
+        processarMaiorNumero3Crescente();
+    }
 
-    
+    public static void processarMaiorNumero3Crescente() {
+        mostrarMaiorNumero3Crescente();
+    }
+
+    public static void mostrarMaiorNumero3Crescente() {
+        int numero1 = 0;
+        int numero2 = 0;
+        int numero3 = 0;
+        imprimir("Informe um número:");
+        numero1 = lerValorInt();
+        imprimir("Informe outro número:");
+        numero2 = lerValorInt();
+        imprimir("Informe outro número:");
+        numero3 = lerValorInt();
+
+        if ((numero1 <= numero2) && (numero1 <= numero3)) {
+            imprimeInt(numero1);
+            if (numero2 <= numero3) {
+                imprimeInt(numero2);
+                imprimeInt(numero3);
+            } else {
+                imprimeInt(numero3);
+                imprimeInt(numero2);
+
+            }
+        }
+
+        if ((numero2 <= numero1) && (numero2 <= numero3)) {
+            imprimeInt(numero2);
+            if (numero1 <= numero3) {
+                imprimeInt(numero1);
+                imprimeInt(numero3);
+            } else {
+                imprimeInt(numero3);
+                imprimeInt(numero1);
+
+            }
+        }
+
+        if ((numero3 <= numero1) && (numero3 <= numero2)) {
+            imprimeInt(numero3);
+            if (numero2 <= numero1) {
+                imprimeInt(numero2);
+                imprimeInt(numero1);
+            } else {
+                imprimeInt(numero1);
+                imprimeInt(numero2);
+
+            }
+        }
+    }
+
+    public static void EX05_selecao() {
+        processarMaiorNumero5Crescente();
+    }
+
+    public static void processarMaiorNumero5Crescente() {
+        mostrarMaiorNumero5Crescente();
+    }
+
+    public static void mostrarMaiorNumero5Crescente() {
+        int numero1 = 0;
+        int numero2 = 0;
+        int numero3 = 0;
+        int numero4 = 0;
+        int numero5 = 0;
+
+        imprimir("Informe um número:");
+        numero1 = lerValorInt();
+        imprimir("Informe outro número:");
+        numero2 = lerValorInt();
+        imprimir("Informe outro número:");
+        numero3 = lerValorInt();
+        imprimir("Informe outro número:");
+        numero4 = lerValorInt();
+        imprimir("Informe outro número:");
+        numero5 = lerValorInt();
+
+        if (numero1 > numero2) {
+            int swap = numero1;
+            numero1 = numero2;
+            numero2 = swap;
+        }
+
+        if (numero1 > numero3) {
+            int swap = numero1;
+            numero1 = numero3;
+            numero3 = swap;
+        }
+
+        if (numero1 > numero4) {
+            int swap = numero1;
+            numero1 = numero4;
+            numero4 = swap;
+        }
+
+        if (numero1 > numero5) {
+            int swap = numero1;
+            numero1 = numero5;
+            numero5 = swap;
+        }
+
+        if (numero2 > numero3) {
+            int swap = numero2;
+            numero2 = numero3;
+            numero3 = swap;
+        }
+
+        if (numero2 > numero4) {
+            int swap = numero2;
+            numero2 = numero4;
+            numero4 = swap;
+        }
+
+        if (numero2 > numero5) {
+            int swap = numero2;
+            numero2 = numero5;
+            numero5 = swap;
+        }
+
+        if (numero3 > numero4) {
+            int swap = numero3;
+            numero3 = numero4;
+            numero4 = swap;
+        }
+
+        if (numero3 > numero5) {
+            int swap = numero3;
+            numero3 = numero5;
+            numero5 = swap;
+        }
+
+        if (numero4 > numero5) {
+            int swap = numero4;
+            numero4 = numero5;
+            numero5 = swap;
+        }
+
+        imprimeInt(numero1);
+        imprimeInt(numero2);
+        imprimeInt(numero3);
+        imprimeInt(numero4);
+        imprimeInt(numero5);
+    }
+
+    public static void EX06_selecao(){
+        processarDivisiveisPor10_5_2();
+    }
+
+    public static void processarDivisiveisPor10_5_2(){
+        mostrarDivisiveisPor10_5_2();
+    }
+
+    public static void mostrarDivisiveisPor10_5_2(){
+        int numero = 0;
+        imprimir("Insira um número:");
+        numero = lerValorInt();
+
+        if((numero % 10) == 0){
+            imprimir("É divisível por 10");
+        }
+        if((numero % 5) == 0){
+            imprimir("É divisível por 5");
+        }
+        if((numero % 2) == 0){
+            imprimir("É divisível por 2");
+        }
+        
+        if(((numero % 10) != 0) && ((numero % 5) != 0) && ((numero % 2) != 0)){
+            imprimir("Não é divisível por 10, 5, 2");
+        }
+    }
+
+    public static void EX07_selecao(){
+        processarDuziasMacas();
+    }
+
+    public static void processarDuziasMacas(){
+        mostrarDuziasMacas();
+    }
+
+    public static void mostrarDuziasMacas(){
+        int quantidade = 0;
+        imprimir("Informe quantas maçãs deseja comprar:");
+        quantidade = lerValorInt();
+
+        if(quantidade > 0){
+            if(quantidade > 11){
+                imprimir("O valor de sua compra ficou em: " + (0.25 * quantidade) + " reais");
+            }else{
+                imprimir("O valor de sua compra ficou em: " + (0.30 * quantidade) + " reais");
+            } 
+        }else{
+            imprimir("Insira um valor maior que 0");
+        }
+    }
+
+    public static void EX08_selecao(){
+        processarPesoIdeal();
+    }
+
+    public static void processarPesoIdeal(){
+        mostrarPesoIdeal();
+    }
+
+    public static void mostrarPesoIdeal(){
+        char sexo = ' ';
+        double altura = 0;
+        imprimir("Informe seu sexo (M/F):");
+        sexo = lerValorChar();
+        imprimir("Informe sua altura em m");
+        altura = lerValorDouble();
+        
+        if(sexo == 'M'){
+            imprimir("Peso ideal = " + ((72.7 * altura)-58));
+        }else if(sexo == 'F'){
+            imprimir("Peso ideal = " + ((62.1 * altura)-44));
+        }else{
+            imprimir("Sexo informado inválido");
+        }        
+    }
+
+
+
 }
 
 // TEORIA GERAL DE EUCLIDES PARA NÚMEROS PERFEITOS
