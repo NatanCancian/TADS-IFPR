@@ -1569,6 +1569,33 @@ public class IO {
         }
     }
 
+    public static void EX10_selecao(){
+        processarFormadorDeTriangulo();
+    }
+
+    public static void processarFormadorDeTriangulo(){
+        mostrarFormadorDeTriangulo();
+    }
+
+    public static void mostrarFormadorDeTriangulo(){
+        double ladoA = 0;
+        double ladoB = 0;
+        double ladoC = 0;
+        imprimir("Insira a medida do 1º lado do triângulo:");
+        ladoA = lerValorDouble();  
+        imprimir("Insira a medida do 2º lado do triângulo:");
+        ladoB = lerValorDouble();
+        imprimir("Insira a medida do 3º lado do triângulo:");
+        ladoC = lerValorDouble();
+       if((ladoA >= (ladoB + ladoC)) || (ladoB >= (ladoA + ladoC)) ||(ladoC >= (ladoA + ladoB))){
+            imprimir("Não pode existir um triângulo com essas medidas");
+       }else{
+        imprimir("Pode existir um triângulo com essas medidas");
+       }
+    }
+
+
+
 }
 
 // TEORIA GERAL DE EUCLIDES PARA NÚMEROS PERFEITOS
