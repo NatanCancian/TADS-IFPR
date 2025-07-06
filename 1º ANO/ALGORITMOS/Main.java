@@ -5,5 +5,6 @@ public class Main{
     
     public static void main(String[] args){
         aula07.aula("aula");
+        IO.imprimir("Main");
     }
 }

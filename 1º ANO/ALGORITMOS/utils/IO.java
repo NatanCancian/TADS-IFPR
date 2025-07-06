@@ -1594,7 +1594,102 @@ public class IO {
        }
     }
 
+    public static void EX11_selecao(){
+        processarPoligono();
+    }
 
+    public static void processarPoligono(){
+        identificarPoligono();
+    }
+
+    public static void identificarPoligono(){
+        double lado1 = 0;
+        double lado2 = 0;
+        double lado3 = 0;
+        int qtdLados = 0;
+        imprimir("Informe a quantidade de lados do polígono:");
+        qtdLados = lerValorInt();
+        switch (qtdLados) {
+
+            case 3:
+            imprimir("Informe a medida do 1º lado:");
+            lado1 = lerValorDouble();
+            imprimir("Informe a medida do 2º lado:");
+            lado2 = lerValorDouble();
+            imprimir("Informe a medida do 3º lado:");
+            lado3 = lerValorDouble();
+            double semiperimetro = ((lado1 + lado2 + lado3)/2);
+            double areaTriangulo = Math.sqrt(semiperimetro * (semiperimetro - lado1) * (semiperimetro - lado2) 
+            * (semiperimetro * lado3));    
+            imprimir("Seu polígono é do tipo TRIÂNGULO e sua área é aproximadamente: " + areaTriangulo 
+            + " cm²"); 
+            break;
+            
+            case 4:
+            imprimir("Informe a medida do 1º lado:");
+            lado1 = lerValorDouble();
+            double areaQuadrado = lado1 * lado1;
+            imprimir("Seu polígono é do tipo QUADRADO e sua área é aproximadamente: " + areaQuadrado 
+            + " cm²");                
+            break;
+
+            case 5:
+            imprimir("Informe a medida do 1º lado:");
+            lado1 = lerValorDouble();
+            double areaPentagono = (5 * (lado1 * lado1)) / (4 * Math.sqrt(5 - (2*Math.sqrt(5))));
+            imprimir("Seu polígono é do tipo PENTÁGONO e sua área é aproximadamente: " + areaPentagono 
+            + " cm²");                
+            break;
+
+            default:
+                if(qtdLados > 5){
+                    imprimir("POLÍGONO NÃO IDENTIFICADO");
+                }else if(qtdLados < 3){
+                    imprimir("NÃO É UM POLÍGONO");
+                }
+                break;
+        }       
+    }
+
+    public static void EX12_selecao(){
+        processarParOuImpar();
+    }
+
+    public static void processarParOuImpar(){
+        mostrarParOuImpar();
+    }
+
+    public static void mostrarParOuImpar(){
+        int numero = 0;
+        imprimir("Informe um número");
+        numero = lerValorInt();
+        if((numero % 2) == 0){
+            imprimir("Número par");
+        }else{
+            imprimir("Número ímpar");
+        }
+    }
+
+    public static void EX13_selecao(){
+        processarParEPositivo();
+    }    
+
+    public static void processarParEPositivo(){
+        mostrarParEPositivo();
+    }
+
+    public static void mostrarParEPositivo(){
+        int numero = 0;
+        imprimir("Informe um número");
+        numero = lerValorInt();
+        if((numero > 0) && ((numero % 2) == 0)){
+            imprimir("O número é Positivo e Par ao mesmo tempo");
+        }else{
+            imprimir("O número não é Positivo e Par ao mesmo tempo");
+        }
+    }
+
+    
 
 }
 
