@@ -868,14 +868,14 @@ public class IO {
     }
 
     public static void EX10_2() {
-        processarDesconto();
+        processarDescontoMercadoria();
     }
 
-    public static void processarDesconto() {
-        mostrarDesconto();
+    public static void processarDescontoMercadoria() {
+        mostrarDescontoMercadoria();
     }
 
-    public static void mostrarDesconto() {
+    public static void mostrarDescontoMercadoria() {
         double preco = 0;
         double desconto = 0;
         double percentual = 0;
@@ -1453,94 +1453,94 @@ public class IO {
         imprimeInt(numero5);
     }
 
-    public static void EX06_selecao(){
+    public static void EX06_selecao() {
         processarDivisiveisPor10_5_2();
     }
 
-    public static void processarDivisiveisPor10_5_2(){
+    public static void processarDivisiveisPor10_5_2() {
         mostrarDivisiveisPor10_5_2();
     }
 
-    public static void mostrarDivisiveisPor10_5_2(){
+    public static void mostrarDivisiveisPor10_5_2() {
         int numero = 0;
         imprimir("Insira um número:");
         numero = lerValorInt();
 
-        if((numero % 10) == 0){
+        if ((numero % 10) == 0) {
             imprimir("É divisível por 10");
         }
-        if((numero % 5) == 0){
+        if ((numero % 5) == 0) {
             imprimir("É divisível por 5");
         }
-        if((numero % 2) == 0){
+        if ((numero % 2) == 0) {
             imprimir("É divisível por 2");
         }
-        
-        if(((numero % 10) != 0) && ((numero % 5) != 0) && ((numero % 2) != 0)){
+
+        if (((numero % 10) != 0) && ((numero % 5) != 0) && ((numero % 2) != 0)) {
             imprimir("Não é divisível por 10, 5, 2");
         }
     }
 
-    public static void EX07_selecao(){
+    public static void EX07_selecao() {
         processarDuziasMacas();
     }
 
-    public static void processarDuziasMacas(){
+    public static void processarDuziasMacas() {
         mostrarDuziasMacas();
     }
 
-    public static void mostrarDuziasMacas(){
+    public static void mostrarDuziasMacas() {
         int quantidade = 0;
         imprimir("Informe quantas maçãs deseja comprar:");
         quantidade = lerValorInt();
 
-        if(quantidade > 0){
-            if(quantidade > 11){
+        if (quantidade > 0) {
+            if (quantidade > 11) {
                 imprimir("O valor de sua compra ficou em: " + (0.25 * quantidade) + " reais");
-            }else{
+            } else {
                 imprimir("O valor de sua compra ficou em: " + (0.30 * quantidade) + " reais");
-            } 
-        }else{
+            }
+        } else {
             imprimir("Insira um valor maior que 0");
         }
     }
 
-    public static void EX08_selecao(){
+    public static void EX08_selecao() {
         processarPesoIdeal();
     }
 
-    public static void processarPesoIdeal(){
+    public static void processarPesoIdeal() {
         mostrarPesoIdeal();
     }
 
-    public static void mostrarPesoIdeal(){
+    public static void mostrarPesoIdeal() {
         char sexo = ' ';
         double altura = 0;
         imprimir("Informe seu sexo (M/F):");
         sexo = lerValorChar();
         imprimir("Informe sua altura em m");
         altura = lerValorDouble();
-        
-        if(sexo == 'M'){
-            imprimir("Peso ideal = " + ((72.7 * altura)-58));
-        }else if(sexo == 'F'){
-            imprimir("Peso ideal = " + ((62.1 * altura)-44));
-        }else{
+
+        if (sexo == 'M') {
+            imprimir("Peso ideal = " + ((72.7 * altura) - 58));
+        } else if (sexo == 'F') {
+            imprimir("Peso ideal = " + ((62.1 * altura) - 44));
+        } else {
             imprimir("Sexo informado inválido");
-        }        
+        }
     }
 
-    public static void EX09_selecao(){
+    public static void EX09_selecao() {
         processarOperadores();
     }
 
-    public static void processarOperadores(){
+    public static void processarOperadores() {
         mostrarOperadores();
     }
 
-    public static void mostrarOperadores(){
+    public static void mostrarOperadores() {
         int valor1 = 0;
-        int valor2 = 0; 
+        int valor2 = 0;
         char operador = ' ';
 
         imprimir("Informe um valor:");
@@ -1552,57 +1552,57 @@ public class IO {
         imprimir("Informe um operador:");
         operador = lerValorChar();
 
-        if(operador == '*'){
+        if (operador == '*') {
             imprimeInt(valor1 * valor2);
         }
 
-        if(operador == '/'){
+        if (operador == '/') {
             imprimeInt(valor1 / valor2);
         }
 
-        if(operador == '+'){
+        if (operador == '+') {
             imprimeInt(valor1 + valor2);
         }
 
-        if(operador == '-'){
+        if (operador == '-') {
             imprimeInt(valor1 - valor2);
         }
     }
 
-    public static void EX10_selecao(){
+    public static void EX10_selecao() {
         processarFormadorDeTriangulo();
     }
 
-    public static void processarFormadorDeTriangulo(){
+    public static void processarFormadorDeTriangulo() {
         mostrarFormadorDeTriangulo();
     }
 
-    public static void mostrarFormadorDeTriangulo(){
+    public static void mostrarFormadorDeTriangulo() {
         double ladoA = 0;
         double ladoB = 0;
         double ladoC = 0;
         imprimir("Insira a medida do 1º lado do triângulo:");
-        ladoA = lerValorDouble();  
+        ladoA = lerValorDouble();
         imprimir("Insira a medida do 2º lado do triângulo:");
         ladoB = lerValorDouble();
         imprimir("Insira a medida do 3º lado do triângulo:");
         ladoC = lerValorDouble();
-       if((ladoA >= (ladoB + ladoC)) || (ladoB >= (ladoA + ladoC)) ||(ladoC >= (ladoA + ladoB))){
+        if ((ladoA >= (ladoB + ladoC)) || (ladoB >= (ladoA + ladoC)) || (ladoC >= (ladoA + ladoB))) {
             imprimir("Não pode existir um triângulo com essas medidas");
-       }else{
-        imprimir("Pode existir um triângulo com essas medidas");
-       }
+        } else {
+            imprimir("Pode existir um triângulo com essas medidas");
+        }
     }
 
-    public static void EX11_selecao(){
+    public static void EX11_selecao() {
         processarPoligono();
     }
 
-    public static void processarPoligono(){
+    public static void processarPoligono() {
         identificarPoligono();
     }
 
-    public static void identificarPoligono(){
+    public static void identificarPoligono() {
         double lado1 = 0;
         double lado2 = 0;
         double lado3 = 0;
@@ -1612,84 +1612,255 @@ public class IO {
         switch (qtdLados) {
 
             case 3:
-            imprimir("Informe a medida do 1º lado:");
-            lado1 = lerValorDouble();
-            imprimir("Informe a medida do 2º lado:");
-            lado2 = lerValorDouble();
-            imprimir("Informe a medida do 3º lado:");
-            lado3 = lerValorDouble();
-            double semiperimetro = ((lado1 + lado2 + lado3)/2);
-            double areaTriangulo = Math.sqrt(semiperimetro * (semiperimetro - lado1) * (semiperimetro - lado2) 
-            * (semiperimetro * lado3));    
-            imprimir("Seu polígono é do tipo TRIÂNGULO e sua área é aproximadamente: " + areaTriangulo 
-            + " cm²"); 
-            break;
-            
+                imprimir("Informe a medida do 1º lado:");
+                lado1 = lerValorDouble();
+                imprimir("Informe a medida do 2º lado:");
+                lado2 = lerValorDouble();
+                imprimir("Informe a medida do 3º lado:");
+                lado3 = lerValorDouble();
+                double semiperimetro = ((lado1 + lado2 + lado3) / 2);
+                double areaTriangulo = Math.sqrt(semiperimetro * (semiperimetro - lado1) * (semiperimetro - lado2)
+                        * (semiperimetro * lado3));
+                imprimir("Seu polígono é do tipo TRIÂNGULO e sua área é aproximadamente: " + areaTriangulo
+                        + " cm²");
+                break;
+
             case 4:
-            imprimir("Informe a medida do 1º lado:");
-            lado1 = lerValorDouble();
-            double areaQuadrado = lado1 * lado1;
-            imprimir("Seu polígono é do tipo QUADRADO e sua área é aproximadamente: " + areaQuadrado 
-            + " cm²");                
-            break;
+                imprimir("Informe a medida do 1º lado:");
+                lado1 = lerValorDouble();
+                double areaQuadrado = lado1 * lado1;
+                imprimir("Seu polígono é do tipo QUADRADO e sua área é aproximadamente: " + areaQuadrado
+                        + " cm²");
+                break;
 
             case 5:
-            imprimir("Informe a medida do 1º lado:");
-            lado1 = lerValorDouble();
-            double areaPentagono = (5 * (lado1 * lado1)) / (4 * Math.sqrt(5 - (2*Math.sqrt(5))));
-            imprimir("Seu polígono é do tipo PENTÁGONO e sua área é aproximadamente: " + areaPentagono 
-            + " cm²");                
-            break;
+                imprimir("Informe a medida do 1º lado:");
+                lado1 = lerValorDouble();
+                double areaPentagono = (5 * (lado1 * lado1)) / (4 * Math.sqrt(5 - (2 * Math.sqrt(5))));
+                imprimir("Seu polígono é do tipo PENTÁGONO e sua área é aproximadamente: " + areaPentagono
+                        + " cm²");
+                break;
 
             default:
-                if(qtdLados > 5){
+                if (qtdLados > 5) {
                     imprimir("POLÍGONO NÃO IDENTIFICADO");
-                }else if(qtdLados < 3){
+                } else if (qtdLados < 3) {
                     imprimir("NÃO É UM POLÍGONO");
                 }
                 break;
-        }       
+        }
     }
 
-    public static void EX12_selecao(){
+    public static void EX12_selecao() {
         processarParOuImpar();
     }
 
-    public static void processarParOuImpar(){
+    public static void processarParOuImpar() {
         mostrarParOuImpar();
     }
 
-    public static void mostrarParOuImpar(){
+    public static void mostrarParOuImpar() {
         int numero = 0;
         imprimir("Informe um número");
         numero = lerValorInt();
-        if((numero % 2) == 0){
+        if ((numero % 2) == 0) {
             imprimir("Número par");
-        }else{
+        } else {
             imprimir("Número ímpar");
         }
     }
 
-    public static void EX13_selecao(){
+    public static void EX13_selecao() {
         processarParEPositivo();
-    }    
+    }
 
-    public static void processarParEPositivo(){
+    public static void processarParEPositivo() {
         mostrarParEPositivo();
     }
 
-    public static void mostrarParEPositivo(){
+    public static void mostrarParEPositivo() {
         int numero = 0;
         imprimir("Informe um número");
         numero = lerValorInt();
-        if((numero > 0) && ((numero % 2) == 0)){
+        if ((numero > 0) && ((numero % 2) == 0)) {
             imprimir("O número é Positivo e Par ao mesmo tempo");
-        }else{
+        } else {
             imprimir("O número não é Positivo e Par ao mesmo tempo");
         }
     }
 
-    
+    public static void EX23_selecao() {
+        processarCedulas();
+    }
+
+    public static void processarCedulas() {
+        mostrarCedulas();
+    }
+
+    public static void mostrarCedulas() {
+        int valor_saque = 0;
+        IO.imprimir("Qual valor deseja sacar? ");
+        valor_saque = IO.lerValorInt();
+        if (valor_saque < 601 && valor_saque > 0) {
+
+            while (true) {
+                int total = valor_saque;
+
+                if (total >= 100) {
+                    int qtd_notas = total / 100;
+                    if (qtd_notas > 1) {
+                        imprimir(qtd_notas + " notas de 100");
+                    } else {
+                        imprimir(qtd_notas + " nota de 100");
+                    }
+                    total -= qtd_notas * 100;
+                }
+
+                if (total >= 50) {
+                    int qtd_notas = total / 50;
+                    if (qtd_notas > 1) {
+                        imprimir(qtd_notas + " notas de 50");
+                    } else {
+                        imprimir(qtd_notas + " nota de 50");
+                    }
+                    total -= qtd_notas * 50;
+                }
+
+                if (total >= 10) {
+                    int qtd_notas = total / 10;
+                    if (qtd_notas > 1) {
+                        imprimir(qtd_notas + " notas de 10");
+                    } else {
+                        imprimir(qtd_notas + " nota de 10");
+                    }
+                    total -= qtd_notas * 10;
+                }
+
+                if (total >= 5) {
+                    int qtd_notas = total / 5;
+                    if (qtd_notas > 1) {
+                        imprimir(qtd_notas + " notas de 5");
+                    } else {
+                        imprimir(qtd_notas + " nota de 5");
+                    }
+                    total -= qtd_notas * 5;
+                }
+
+                if (total >= 1) {
+                    int qtd_notas = total / 1;
+                    if (qtd_notas > 1) {
+                        imprimir(qtd_notas + " notas de 1");
+                    } else {
+                        imprimir(qtd_notas + " nota de 1");
+                    }
+                    total -= qtd_notas * 1;
+                }
+
+                if (total == 0) {
+                    break;
+                }
+
+            }
+
+        } else {
+            IO.imprimir("Valor de saque fora do intervalo válido!");
+        }
+    }
+
+    public static void EX24_selecao() {
+        processarCrime();
+    }
+
+    public static void processarCrime() {
+        mostrarCrime();
+    }
+
+    public static void mostrarCrime() {
+        int contador = 0;
+        char resposta = ' ';
+        IO.imprimir("Telefonou para a vítima?(S/N)");
+        resposta = IO.lerValorChar();
+        if (resposta == 'S' || resposta == 's') {
+            contador++;
+        }
+        IO.imprimir("Esteve no local do crime?(S/N)");
+        resposta = IO.lerValorChar();
+        if (resposta == 'S' || resposta == 's') {
+            contador++;
+        }
+        IO.imprimir("Mora perto da vítima?(S/N)");
+        resposta = IO.lerValorChar();
+        if (resposta == 'S' || resposta == 's') {
+            contador++;
+        }
+        IO.imprimir("Devia para a vítima?(S/N)");
+        resposta = IO.lerValorChar();
+        if (resposta == 'S' || resposta == 's') {
+            contador++;
+        }
+        IO.imprimir("Já trabalhou com a vítima?(S/N)");
+        resposta = IO.lerValorChar();
+        if (resposta == 'S' || resposta == 's') {
+            contador++;
+        }
+        if (contador == 0) {
+            IO.imprimir("Inocente");
+        }
+
+        if (contador == 2) {
+            IO.imprimir("Suspeito");
+        }
+        if (contador > 2 && contador < 5) {
+            IO.imprimir("Cúmplice");
+        }
+        if (contador == 5) {
+            IO.imprimir("Assasino");
+        }
+    }
+
+    public static void EX25_selecao() {
+        mostrarDescontoCombustivel();
+    }
+
+    public static void mostrarDescontoCombustivel() {
+        processarDescontoCombustivel();
+    }
+
+    public static void processarDescontoCombustivel() {
+        double preco_combustivel = 0;
+        double preco_final = 0;
+        IO.imprimir("Quantos litros de combustível foram vendidos?");
+        double litragem = IO.lerValorDouble();
+        IO.lerValorString(); //Para capturar '/n' da quebra de linha
+        IO.imprimir("E-Etanol ou G-Gasolina?");
+        String combustivel = IO.lerValorString();
+
+        if (combustivel.equals("Etanol") || combustivel.equals("E")) {
+            preco_combustivel = 3.15;
+        } else if (combustivel.equals("Gasolina") || combustivel.equals("G")) {
+            preco_combustivel = 4.50;
+        }
+        if (litragem <= 20) {
+            if (combustivel.equals("Etanol") || combustivel.equals("E")) {
+                preco_final = litragem * (preco_combustivel - (preco_combustivel * 0.03));
+            }
+
+            if (combustivel.equals("Gasolina") || combustivel.equals("G")) {
+                preco_final = litragem * (preco_combustivel - (preco_combustivel * 0.04));
+            }
+        }
+
+        if (litragem > 20) {
+            if (combustivel.equals("Etanol") || combustivel.equals("E")) {
+                preco_final = litragem * (preco_combustivel - (preco_combustivel * 0.05));
+            }
+
+            if (combustivel.equals("Gasolina") || combustivel.equals("G")) {
+                preco_final = litragem * (preco_combustivel - (preco_combustivel * 0.06));
+            }
+        }
+        IO.imprimir("Preço total: R$ " + preco_final);
+    }
 
 }
 
