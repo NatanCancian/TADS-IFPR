@@ -1862,6 +1862,15 @@ public class IO {
         IO.imprimir("Preço total: R$ " + preco_final);
     }
 
+    public static void EX26_selecao(){
+        processarDeltaEquacao2oGrau();
+    }
+
+    public static void processarDeltaEquacao2oGrau(){
+        mostrarDeltaEquacao2oGrau();
+    }
+
+
 }
 
 // TEORIA GERAL DE EUCLIDES PARA NÚMEROS PERFEITOS
