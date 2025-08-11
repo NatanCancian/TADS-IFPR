@@ -1058,9 +1058,13 @@ public class IO {
         b = lerValorDouble();
         imprimir("Informe o valor de c:");
         c = lerValorDouble();
-        x1 = (-b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / 2 * a;
+        x1 = ( b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / 2 * a;
         x2 = (-b - Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / 2 * a;
-        imprimir("Raiz positiva: " + x1 + " Raiz negativa: " + x2);
+        if((Double.isNaN(x1)) && (Double.isNaN(x2))){
+            imprimir("As raízes não pertencem aos números reais");
+        }else{
+             imprimir("Raiz positiva: " + x1 + " Raiz negativa: " + x2);
+        }
     }
 
     public static void EX34_2() {
@@ -1870,6 +1874,34 @@ public class IO {
         mostrarDeltaEquacao2oGrau();
     }
 
+    public static void mostrarDeltaEquacao2oGrau(){
+        double delta = 0;
+        double a = 0;
+        double b = 0;
+        double c = 0;
+        imprimir("Informe o valor de a:");
+        a = lerValorDouble();
+        imprimir("Informe o valor de b:");
+        b = lerValorDouble();
+        imprimir("Informe o valor de c:");
+        c = lerValorDouble();
+        delta = Math.sqrt(Math.pow(b, 2) - 4 * a * c);
+        if(delta == 0 || delta > 0){
+            imprimir("As raízes pertencem aos números reais");
+        }else{
+            imprimir("As raízes não pertencem aos números reais");
+        }
+    }
+
+    public static void EX27_selecao(){
+        processarBhaskara();
+    }
+
+    public static void processarRaizEquacao2oGrau(){
+        mostrarBhaskara();
+    }
+
+    
 
 }
 
