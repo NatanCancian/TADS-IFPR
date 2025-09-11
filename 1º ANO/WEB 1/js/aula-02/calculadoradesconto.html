@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Desconto</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora de Desconto</h2>
+        <input type = "number" id = "preco" placeholder = "Digite o preço">
+        <button onclick = "mostraDesconto10()">Aplicar 10%</button>
+        <button onclick = "mostraDesconto25()">Aplicar 25%</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+
+        function mostrarValor(){
+            document.getElementById("preco").innerText = "Preço alterado com sucesso";
+        }
+
+        function calcularDesconto(valorOriginal, percentual){
+            let desconto = valorOriginal * (percentual/100);
+            let valorFinal = valorOriginal - desconto;
+            return valorFinal;
+        }
+
+        function mostraDesconto10(){
+            let preco = parseFloat(document.getElementById("preco").value);
+        
+            if(isNaN(preco) || preco <= 0){
+                document.getElementById("resultado").innerText = "Digite um valor válido";
+                return
+            }
+
+        let final = calcularDesconto(preco,10);
+        document.getElementById("resultado").innerText = `Valor com descont de 10% ${final.toFixed(2)}`;   
+
+        }
+
+        function mostraDesconto25(){
+            let preco = parseFloat(document.getElementById("preco").value);
+        
+            if(isNaN(preco) || preco <= 0){
+                document.getElementById("resultado").innerText = "Digite um valor válido";
+                return
+            }
+
+        let final = calcularDesconto(preco,25)
+        document.getElementById("resultado").innerText = `Valor com descont de 10% ${final.toFixed(2)}`;   
+
+        }
+
+    </script>
+
+</body>
+</html>

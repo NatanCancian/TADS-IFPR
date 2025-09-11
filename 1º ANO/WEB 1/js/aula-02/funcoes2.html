@@ -1,0 +1,50 @@
+<script>
+/*
+    function soma(a,b){
+        return (a + b);
+    }
+    
+    console.log(soma(3,5));
+
+    function mensagem(){
+        console.log("Olá ");
+    }
+ */   
+
+    //mensagem();
+
+    //Escopo - Define onde suas variáveis podem ser acessadas
+
+    //escopo global
+
+    let nome = "João do Escopo";
+
+    function monstraNome(){
+        console.log(nome);
+    }
+
+    monstraNome();
+
+    //escopo local
+
+    function exemplo(){
+        let valor = 42;
+        console.log(valor);    
+    }
+
+    exemplo();
+
+    //console.log(valor);
+
+    const pessoa = {
+        nome: "Carlos",
+        falar: function(){
+            console.log(`Meu nome não é ${this.nome}`)
+        }
+    }
+
+    pessoa.falar();
+
+    
+
+</script>
