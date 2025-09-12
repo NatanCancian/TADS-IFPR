@@ -42,7 +42,7 @@ CREATE PROCEDURE proc_verificar_quantidade_funcionario(OUT quantidade int)
 BEGIN
 	SELECT COUNT(*) INTO quantidade FROM Funcionario;
 END $
-DELIMITER ;
+DELIMITER ; 
 
 CALL proc_verificar_quantidade_funcionario(@total); # @ -> é para criar uma variavel para a saida do procedimento 
 
