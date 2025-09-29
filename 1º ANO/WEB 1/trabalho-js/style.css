@@ -1,0 +1,25 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+#caixa-principal {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.paragrafo, #paragrafo-unico, .destacado {
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.botoes button {
+  margin: 5px;
+  padding: 10px 15px;
+}
+
+.destacado {
+  background-color: lightyellow;
+}

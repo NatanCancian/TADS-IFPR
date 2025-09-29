@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo - querySelector vs getElementBy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Seletores em JavaScript</h1>
+
+  <div id="caixa-principal">
+    <p id="paragrafo-unico">Este é um parágrafo com ID.</p>
+    <p class="paragrafo">Parágrafo com classe.</p>
+    <p class="paragrafo">Outro parágrafo com classe.</p>
+    <span class="destacado">Texto com classe 'destacado'</span>
+  </div>
+
+  <div class="botoes">
+    <button onclick="selecionarPorId()">getElementById</button>
+    <button onclick="selecionarPorClasse()">getElementsByClassName</button>
+    <button onclick="selecionarPorTag()">getElementsByTagName</button>
+    <button onclick="selecionarQuery()">querySelector</button>
+    <button onclick="selecionarQueryTodos()">querySelectorAll</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
