@@ -7,14 +7,14 @@ create table Partida(
     fornecedor_jogo varchar(100) not null,
     hora_inicio DATETIME not null,
     hora_fim DATETIME not null,
-    num_jogadores int(20) not null,
+    num_jogadores int not null,
     primary key (id_Partida)
 );
 
 create table Jogador(
     id_Jogador int not null auto_increment,
     nome_jogador varchar(100) not null,
-    nivel_jogador int(10) not null,
+    nivel_jogador int not null,
     primary key (id_Jogador)
 );
 
@@ -35,19 +35,16 @@ create table JogandoPartida(
 insert into Jogador (nome_jogador, nivel_jogador) values ('Zezão', 1, ), ('Carlin', 5);
 
 insert into Partida (nome_jogo, fornecedor_jogo, hora_inicio, hora_fim, num_jogadores) values
-('LOL', 'RIOT Games', '2025-09-11 14:00:00', '2025-09-11 15:30:00', 2);
+('LOL', 'RIOT Games', NOW(), '2025-09-11 15:30:00', 2);
 
 insert into JogandoPartida (id_Part, id_Jog, hora_entrada) values (1, 2, '2025-09-11 14:00:00');
-
---Verificar depois como fica a questão de finalizar a partida (criar trigger q inclui o hora_fim em partida ou em jogandoPartida) ////
-
--- criar view para mostrar somente o nº de jogadores sem as chaves estrangeiras ///
-
 -- View a)
 
 CREATE VIEW vw_PartidaJogador
-AS SELECT Jogador.nome_jogador as Jogo, Partida.nome_jogo, as Partida 
-FROM JogandoPartida WHERE Jogador.id_Jogador = JogandoPartida.id_Jog; 
+SELECT j.nome_jogador AS Jogo, p.nome_jogo AS Partida
+FROM JogandoPartida jp
+JOIN Jogador j ON j.id_jogador = jp.id_Jog
+JOIN Partida p ON p.id_Partida = jp.id_Part;
 
 -- Procedure b)
 
@@ -92,8 +89,7 @@ CREATE PROCEDURE proc_jogador_sai(IN idj int, IN idp int)
 BEGIN
     DELETE id_Jog 
     FROM JogandoPartida
-    WHERE id_Jog = idj;
-
+    WHERE id_Jog = idj and id_Part = idp;
 END $
 DELIMITER ;
 
@@ -113,10 +109,9 @@ CREATE TRIGGER tgr_atualiza_jogadores
 AFTER DELETE ON JogandoPartida
 FOR EACH ROW
 BEGIN
-     UPDATE JogandoPartida SET qtd_jogadores = qtd_jogadores + OLD.qtd_jogadores
-     WHERE id_Part = id_Partida;
+     UPDATE Partida
+    SET num_jogadores = GREATEST(num_jogadores - 1, 0)
+    WHERE id_Partida = OLD.id_Part;
 END $
 DELIMITER ;
 
-
--- Ajustar parte  d), e)
