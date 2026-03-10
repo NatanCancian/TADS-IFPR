@@ -1,5 +1,7 @@
 import * as readline from "readline";
 
+type Turma = "1TADS" | "2TADS" | "3TADS";
+
 export function obrigatorio(valor: string, nomeCampo: string): string {
   const v = valor.trim();
   if (v.length === 0) {

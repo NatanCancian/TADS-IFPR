@@ -3,12 +3,12 @@
 
 # Build artifacts (JavaScript output and source maps)
 # Replace as required with your project's build location (e.g., /dist, /build, /out)
-/build
-/dist
-/*.js
+*/build
+*/dist
+*/*.js
 !*.config.js
-/*.js.map
-/*.d.ts
+*/*.js.map
+*/*.d.ts
 
 # Optional: TypeScript cache file
 .tsbuildinfo
