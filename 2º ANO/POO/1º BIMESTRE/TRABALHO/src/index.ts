@@ -1,4 +1,3 @@
-import { log } from "node:console";
 import { perguntar,fecharIO } from "./io";
 import { obrigatorio,parseNumeroInteiro, entre, validarTurma } from "./validators";
 type Turma = "1TADS" | "2TADS" | "3TADS";
@@ -15,12 +14,11 @@ async function main() {
     const nome = (await perguntar("Digite seu nome: ")).trim();
     obrigatorio(nome, "nome");
     const idadeStr = (await perguntar("Digite sua idade: ")).trim();
-    const idade = parseNumeroInteiro(idadeStr, "idade");
     obrigatorio(idadeStr,"idade");
+    const idade = parseNumeroInteiro(idadeStr, "idade");
     entre(idade,0,120,"IDADE");    
     const turmaInput = Number((await perguntar("[1] 1ºTADS\n[2] 2ºTADS\n[3] 3ºTADS\nInforme a turma do aluno: ")).trim());
-    let turma: Turma;
-    turma = validarTurma(turmaInput);
+    const turma = validarTurma(turmaInput);
 
     const aluno: Aluno = {
        nome,
@@ -34,6 +32,6 @@ async function main() {
     fecharIO();
   }
 }
-main();
+main().catch((err) => console.error(err.message));
 
 
