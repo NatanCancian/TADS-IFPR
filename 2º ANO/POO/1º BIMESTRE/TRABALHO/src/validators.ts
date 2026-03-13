@@ -10,6 +10,29 @@ export function obrigatorio(valor: string, nomeCampo: string): string {
   return v;
 }
 
+export function testaInteiro(){ 
+    const inteiro = (valor: number): boolean => Number.isNaN(valor);
+}
+
+export function validarTurma(turmaInput: string | number): Turma{
+     switch (turmaInput) {
+    case 1:
+    case "1TADS":
+      return "1TADS";
+
+    case 2:
+    case "2TADS":
+      return "2TADS";
+
+    case 3:
+    case "3TADS":
+      return "3TADS";
+    
+    default:
+      throw new Error("Turma inválida. Digite 1TADS, 2TADS ou 3TADS");
+  }
+}
+
 export function parseNumeroInteiro(valor: string, nomeCampo: string): number {
   const v = obrigatorio(valor, nomeCampo);
   const n = Number(v);
@@ -28,7 +51,6 @@ export function entre(n: number, min: number, max: number, nomeCampo: string): n
   return n;
 }
 
-
 async function main() {
   // IO local só para o demo (não afeta quem importa este módulo)
   const rl = readline.createInterface({
@@ -43,12 +65,13 @@ async function main() {
     console.log("=== Demo: validators.ts (validação de entrada) ===");
 
     const nome = obrigatorio(await perguntar("Digite seu nome: "), "nome");
-
-    const idadeStr = await perguntar("Digite sua idade (0–120): ");
+    const idadeStr = obrigatorio(await perguntar("Digite sua idade (0–120): "),"idade");
     const idade = entre(parseNumeroInteiro(idadeStr, "idade"), 0, 120, "idade");
-
+    const turmaInput = Number(obrigatorio(await perguntar("[1] 1ºTADS\n[2] 2ºTADS\n[3] 3ºTADS\nInforme a turma do aluno: "),"turma").trim());
+    let turma: Turma;
+    turma = validarTurma(turmaInput);
     console.log("\n✅ Dados válidos!");
-    console.log({ nome, idade });
+    console.log({ nome, idade, turma });
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     console.error("\n❌ Erro de validação:", msg);
