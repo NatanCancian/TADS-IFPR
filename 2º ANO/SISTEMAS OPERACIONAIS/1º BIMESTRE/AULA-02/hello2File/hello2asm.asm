@@ -14,13 +14,20 @@ _start:
 	mov rdx, 0664
 	syscall
 	
+	#escrever
 	mov r10, rax
-	mov rdi, 1
+	mov rax, 1
+	mov rdi, r10
 	lea rsi, [rip +m]
 	mov rdx, m_l
 	syscall
 	
-	mov rsi, r10
-	mov rdi, 60
+	#fechar
+	mov rax, 3
+	mov rdi, r10
+	syscall
+
+	#sair
+	mov rax, 60
 	mov rdi, 0
 	syscall
