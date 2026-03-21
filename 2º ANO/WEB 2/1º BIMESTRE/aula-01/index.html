@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criando HTML</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Veja suas informações aqui</h1>  
+    <div id="dados">
+        <form method="get">
+            <p>ID do Post:</p>
+            <input type="number" id="id-post" name="id" placeholder="Digite o id" required>
+            <button type="button" onclick="buscarId()">Buscar</button>
+        </form>     
+    </div>
+    <script>
+        function buscarId(){
+        const id_entrada = document.getElementById('id-post').value;
+        const url = `https://jsonplaceholder.typicode.com/todos/${id_entrada}`; 
+
+            fetch(url)
+              .then(response => response.json())
+              .then(resposta => {
+                    document.getElementById('dados').innerHTML = `
+                        <p>ID: ${resposta.id}</p>
+                        <p>USER ID: ${resposta.userId}</p>
+                        <p>TÍTULO: ${resposta.title}</p>
+                        <p>CORPO: ${resposta.body}</p>
+                    `;
+              }); 
+        }
+    </script>
+</body>
+</html>
