@@ -1,0 +1,26 @@
+{
+  "name": "exemploaula05",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+   "scripts": {
+    "build": "tsc",
+    "dev:01": "ts-node src/01-metodos.ts",
+    "dev:02": "ts-node src/02-encapsulamento.ts",
+    "dev:03": "ts-node src/03-saudacao.ts",
+    "dev:04": "ts-node src/04-lampada.ts",
+    "dev:05": "ts-node src/05-pessoa.ts",
+    "dev:06": "ts-node src/06-metodoCriacao.ts",
+    "dev:07": "ts-node src/07-metodoDestruicao.ts"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  }
+}
