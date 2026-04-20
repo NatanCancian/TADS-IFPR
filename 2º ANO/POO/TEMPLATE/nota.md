@@ -1,6 +1,6 @@
-# EXECUTAR SEMPRE 
+# SETUP 
 ## npm init -y
-## npm i -D typescript ts-node @types/node
+## npm i -D typescript tsx(ts-node) @types/node
 ## npx tsc --init
 
 # PARA COMPILAR 
@@ -10,7 +10,7 @@
 ## npx tsc --ignoreConfig
 
 # PARA RODAR ISOLADAMENTE
-## npx ts-node src/pasta/arquivo
+## npx ts-node(tsx) src/pasta/arquivo
 
 # PARA RODAR O PROJETO INTEIRO
 ## npm run dev(atalho configurado)
