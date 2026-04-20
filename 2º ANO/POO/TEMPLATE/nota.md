@@ -20,3 +20,12 @@
 
 # PARA CÓDIGOS ASYNC
 ## tsx src/index.ts
+
+# PARA COMPILAR O PROJETO INTEIRO(GERAR OS .js)
+## tsc (npm run build)
+
+# PARA RODAR O ARQUIVO DIRETAMENTE SEM USAR O tsc
+## npx tsx src/pasta/arquivo
+
+# PARA RODAR O PROJETO INTEIRO TAMBÉM
+## node dist/index.js
