@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    // File Layout
+     "rootDir": "./src",
+     // onde está o código ts
+     "outDir": "./dist",
+    //onde o código js compilado será gerado
+    // Environment Settings
+    
+    "module": "commonjs",
+    // define o sistema de módulos (Node clássico +- legado)
+    "target": "es2020",
+    // versão do js gerado
+    "moduleResolution": "node",
+    // faz os imports como Node clássico
+    "types": ["node"],
+    //inlcui os tipos do node
+
+    // Other Outputs
+    "sourceMap": false,
+    // sourceMap: true,  é útil para debug
+    //"declaration": false, -> não gera arquivos .d.ts(arquivo de declaração de tipo(útil para fazer bibliotecas)) 
+    //"declarationMap": true, -> gera arquivos de mapeamento para os .d.ts, facilitando ir direto para o .ts, util em monorepos
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    // Força checagem ao acessar arrays/objetos
+    "exactOptionalPropertyTypes": true,
+    // faz com que o ts não aceite passar undefined em propriedades opcionais(marcadas com o ?)
+
+    // Recommended Options
+    "strict": true,
+    // ativa um conjunto de verificações rigorosas de tipo
+    //"jsx": "react-jsx",
+    "verbatimModuleSyntax": false,
+    // controla como imports são emitidos(continua usando a forma legada)
+    "esModuleInterop": true,
+    // permite a compatibilidade entre módulos ES6 (import/export) e módulos CommonJS (require/module.exports)
+    "forceConsistentCasingInFileNames": true,
+    // evita erro entre windows e linux
+    "isolatedModules": true,
+    // força cada arquivo a ser independente
+    "noUncheckedSideEffectImports": true,
+    // evita import que só executa código sem controle
+    "moduleDetection": "force",
+    // força o TS a tratar tudo como módulo
+    "skipLibCheck": true,
+    //ignora erros de libs externas
+    "include": ["src"],
+    // o que vai compilar
+    "exclude": ["node_modules", "dist"]
+    // o que vai ignorar 
+  }
+}
