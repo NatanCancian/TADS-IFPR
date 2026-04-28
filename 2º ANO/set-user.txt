@@ -1,0 +1,3 @@
+git config --global user.name "NatanCancian" && git config --global user.email "natancancian@gmail.com"
+
+git config --global --unset user.name && git config --global --unset user.email
