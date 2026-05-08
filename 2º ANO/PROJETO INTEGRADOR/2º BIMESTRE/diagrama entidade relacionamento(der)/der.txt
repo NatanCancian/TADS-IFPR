@@ -1,5 +1,5 @@
 @startuml
-title GESCONP - Diagrama Entidade-Relacionamento (Físico - Enterprise)
+title GESCONP - Diagrama Entidade-Relacionamento (Físico - Enterprise Final)
 
 ' Configurações visuais
 skinparam roundcorner 5
@@ -38,6 +38,7 @@ entity "usuarios" {
   nome : VARCHAR(255)
   matricula : VARCHAR(50) <<UNIQUE>>
   perfil : VARCHAR(20)
+  senha_hash : VARCHAR(255) ' <-- Adicionado para suportar AutenticacaoService
 }
 
 entity "contratos" {
@@ -124,7 +125,7 @@ entity "alertas" {
   data_criacao : TIMESTAMP
   lido : BOOLEAN
   * contrato_id : BIGINT <<FK>>
-  usuario_id : BIGINT <<FK>> ' Opcional: se o alerta for para um usuário específico
+  usuario_id : BIGINT <<FK>>
 }
 
 entity "logs_auditoria" {

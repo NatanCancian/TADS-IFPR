@@ -1,0 +1,32 @@
+@startuml
+title Processo Interno: Monitoramento de Vigência e Alertas (RF15)
+
+|Gatilho (Cron Job)|
+start
+:Executar diariamente às 01:00 AM;
+
+|Backend (Spring Boot)|
+:Buscar todos os Contratos ATIVOS no Banco;
+
+repeat :Para cada Contrato;
+  :Calcular Dias Restantes\n(Data Fim - Data Atual);
+  
+  if (Dias Restantes <= 90 e > 0?) then (Sim)
+    :Verificar se já existe Alerta de \nVENCIMENTO_PROXIMO não lido;
+    if (Alerta já existe?) then (Sim)
+      :Ignorar (Evitar spam);
+    else (Não)
+      :Gerar Alerta: "Atenção: Contrato \nvence em X dias";
+      :Salvar na tabela 'Alertas';
+    endif
+  else if (Dias Restantes < 0) then (Sim)
+    :Alterar Status do Contrato para ENCERRADO;
+    :Gravar Log de Auditoria Automático;
+  else (Não)
+    :Nenhuma ação necessária;
+  endif
+repeat while (Existem mais contratos?)
+
+:Encerrar Job Diário;
+stop
+@enduml

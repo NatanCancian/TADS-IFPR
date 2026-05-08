@@ -1,0 +1,40 @@
+@startuml
+title Fluxo de Upload e Gestão Documental Segura (RF10)
+
+|Frontend (React)|
+start
+:Acessar Contrato;
+:Selecionar "Adicionar Documento";
+:Escolher Arquivo (PDF) e Tipo (Ex: Extrato);
+:Disparar POST /api/documentos (Multipart/Form-Data);
+
+|Backend (Spring Boot)|
+:Validar Token JWT;
+if (Arquivo é PDF e < Tamanho Máximo?) then (Sim)
+  :Extrair Tamanho e MimeType;
+  :Gerar Hash SHA-256 do Arquivo\n(Garantia de Integridade);
+  :Salvar Arquivo Fisicamente\n(AWS S3, MinIO ou Disco Local);
+  
+  :Instanciar entidade 'Documento'\n(Com URL, Hash e Metadados);
+  :Vincular ao 'Contrato_ID' e Salvar no Banco;
+  
+  fork
+    :Gravar Log de Auditoria:\n"Upload de Documento";
+  fork again
+    :Atualizar Data de Modificação do Contrato;
+  end fork
+  
+  :Retornar 201 (Created) com DTO do Documento;
+  
+|Frontend (React)|
+  :Adicionar novo documento à lista na UI;
+  :Exibir Toast de Sucesso;
+  stop
+else (Não)
+|Backend (Spring Boot)|
+  :Retornar 415 ou 400;
+|Frontend (React)|
+  :Exibir Erro: "Formato inválido ou\narquivo muito grande";
+  stop
+endif
+@enduml

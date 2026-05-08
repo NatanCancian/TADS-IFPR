@@ -1,5 +1,5 @@
 @startuml
-title GESCONP - Diagrama de Classes Arquitetural (Enterprise)
+title GESCONP - Diagrama de Classes Arquitetural (Enterprise - Final)
 
 ' Configurações de estilo
 skinparam packageStyle rectangle
@@ -114,10 +114,17 @@ package "Fiscalização e Inteligência" {
         - String nome
         - String matricula
         - Perfil perfil
+        - String senhaHash
     }
 }
 
 package "Camada de Serviços (Backend Inteligente)" {
+    
+    class AutenticacaoService {
+        + autenticar(login, senha): String
+        + validarToken(token): Boolean
+    }
+
     class CalculadoraRiscoService {
         + calcularScore(Contrato c): NivelRisco
     }
@@ -132,6 +139,10 @@ package "Camada de Serviços (Backend Inteligente)" {
         + gerarMetricasDashboard(Contrato c): DTO
     }
     
+    class MonitorVigenciaJob {
+        + executarVerificacaoDiaria(): void
+    }
+    
     class SincronizadorEloweb {
         + executarSincronizacaoIncremental(): void
     }
@@ -141,7 +152,7 @@ package "Camada de Serviços (Backend Inteligente)" {
     }
 }
 
-' Enumerações formatadas com quebra de linha para evitar Syntax Error
+' Enumerações formatadas com quebra de linha
 enum StatusContrato { 
     ATIVO
     ENCERRADO
@@ -215,6 +226,8 @@ Usuario "1" -- "0..*" Alerta : visualiza
 Usuario "1" -- "0..*" LogAuditoria : executa
 
 ' Dependências de Serviços
+AutenticacaoService ..> Usuario : valida
+MonitorVigenciaJob ..> Contrato : verifica datas
 CalculadoraRiscoService ..> Contrato : analisa
 FinanceiroService ..> Contrato : processa finanças
 ContratoMetricaService ..> Contrato : consolida dados

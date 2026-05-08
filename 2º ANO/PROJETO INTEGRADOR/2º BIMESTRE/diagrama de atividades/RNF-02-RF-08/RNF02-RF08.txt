@@ -1,0 +1,30 @@
+@startuml
+title Fluxo de Autenticação JWT e Controle de Perfil (RNF02 / RF08)
+
+|Frontend (React)|
+start
+:Usuário preenche Login e Senha;
+:Disparar POST /api/auth/login;
+
+|Backend (Spring Boot)|
+:Receber Credenciais;
+:Buscar Usuário no Banco de Dados;
+if (Usuário existe e Senha válida?) then (Sim)
+  :Ler 'Perfil' do Usuário\n(GESTOR, FISCAL, AUDITOR);
+  :Gerar Token JWT\n(Inserindo ID e Perfil no Payload);
+  :Retornar 200 OK + Token JWT;
+  
+|Frontend (React)|
+  :Armazenar Token (Local/Session Storage);
+  :Decodificar Token para ler o Perfil;
+  :Redirecionar para o Dashboard;
+  note left: O menu lateral será montado\nde acordo com o Perfil (RBAC).
+  stop
+else (Não)
+|Backend (Spring Boot)|
+  :Retornar 401 (Unauthorized);
+|Frontend (React)|
+  :Exibir Erro: "Credenciais Inválidas";
+  stop
+endif
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+title Fluxo de Busca e Filtros Avançados Paginados (RF02 / RF03)
+
+|Frontend (React)|
+start
+:Acessar Tela de Listagem de Contratos;
+:Preencher Filtros\n(Ex: Órgão, Status=ATIVO, Risco=ALTO);
+:Disparar GET /api/contratos?status=ATIVO&risco=ALTO&page=0;
+
+|Backend (Spring Boot)|
+:Validar Token JWT;
+:Montar Query Dinâmica\n(Ex: Specification no Spring Data JPA);
+:Executar Consulta no PostgreSQL;
+:Mapear Entidades para DTOs Resumidos;
+:Empacotar em Objeto 'Page'\n(Total de Itens, Páginas, Dados);
+:Retornar 200 OK (Page<ContratoResumoDTO>);
+
+|Frontend (React)|
+if (Retornou resultados?) then (Sim)
+  :Renderizar Tabela de Dados;
+  :Atualizar Componente de Paginação;
+  stop
+else (Não)
+  :Exibir Tabela Vazia\n"Nenhum contrato encontrado para os filtros";
+  stop
+endif
+@enduml
