@@ -1,0 +1,189 @@
+@startuml
+title GESCONP - Diagrama de Classes Final (Completo e Unificado)
+
+' Configurações de estilo para melhor visualização
+skinparam packageStyle rectangle
+skinparam shadowing false
+left to right direction
+
+package "Domínio Organizacional" {
+    class Fornecedor {
+        - Long id
+        - String nome
+        - String cnpj
+        - String email
+    }
+
+    class Orgao {
+        - Long id
+        - String nome
+        - String sigla
+    }
+
+    class Categoria {
+        - Long id
+        - String nome
+    }
+    
+    class Documento {
+        - Long id
+        - String nomeArquivo
+        - String urlStorage
+        - TipoDocumento tipo
+        - LocalDateTime dataUpload
+    }
+
+    class LogAuditoria {
+        - Long id
+        - String operacao
+        - String dadosAnteriores
+        - String dadosNovos
+        - LocalDateTime timestamp
+    }
+}
+
+package "Núcleo do Contrato" {
+    class Contrato {
+        - Long id
+        - String numero
+        - String objeto
+        - BigDecimal valorTotal
+        - BigDecimal saldoDisponivel
+        - LocalDate dataInicio
+        - LocalDate dataFim
+        - StatusContrato status
+        - NivelRisco riscoAtual
+        + calcularSaldo(): BigDecimal
+        + atualizarRisco(NivelRisco novo): void
+    }
+
+    class Aditivo {
+        - Long id
+        - LocalDate dataAssinatura
+        - BigDecimal valorAlterado
+        - Integer prazoExtensaoDias
+        - TipoAditivo tipo
+    }
+
+    class Empenho {
+        - Long id
+        - String notaEmpenho
+        - BigDecimal valor
+        - LocalDate dataEmissao
+    }
+}
+
+package "Fiscalização e Inteligência" {
+    class Ocorrencia {
+        - Long id
+        - String descricao
+        - Gravidade gravidade
+        - LocalDate data
+    }
+
+    class Fiscalizacao {
+        - Long id
+        - LocalDate data
+        - String parecer
+        - Boolean aprovado
+    }
+    
+    class Alerta {
+        - Long id
+        - String titulo
+        - String mensagem
+        - TipoAlerta tipo
+        - LocalDateTime dataCriacao
+        - Boolean lido
+        + marcarComoLido(): void
+    }
+
+    class Usuario {
+        - Long id
+        - String nome
+        - String matricula
+        - Perfil perfil
+    }
+}
+
+package "Serviços e Integração" {
+    class CalculadoraRiscoService {
+        + calcular(Contrato c): NivelRisco
+    }
+    
+    class SincronizadorEloweb {
+        + executarSincronizacao(): void
+    }
+    
+    class ExportadorPNCP {
+        + gerarLogPadraoPNCP(Contrato c): String
+    }
+}
+
+' Enumerações (Corrigidas: itens separados por nova linha)
+enum StatusContrato {
+    ATIVO
+    ENCERRADO
+    INATIVO
+    SUSPENSO
+}
+
+enum NivelRisco {
+    BAIXO
+    MEDIO
+    ALTO
+}
+
+enum TipoAlerta {
+    RISCO_ELEVADO
+    SALDO_CRITICO
+    VENCIMENTO_PROXIMO
+}
+
+enum Perfil {
+    GESTOR
+    FISCAL
+    AUDITOR
+    ADMIN
+}
+
+enum Gravidade {
+    BAIXA
+    MEDIA
+    ALTA
+}
+
+enum TipoAditivo {
+    VALOR
+    PRAZO
+    ESCOPO
+}
+
+enum TipoDocumento {
+    ATA
+    EMPENHO
+    ADITIVO
+    EXTRATO
+}
+
+' Relacionamentos e Associações
+Contrato "1" --> "1" Fornecedor : contratada
+Contrato "1" --> "1" Orgao : contratante
+Contrato "1" --> "1" Categoria : classificado em
+Contrato "1" *-- "0..*" Aditivo : possui
+Contrato "1" *-- "0..*" Empenho : consome saldo
+Contrato "1" *-- "0..*" Documento : possui anexos
+Contrato "1" *-- "0..*" Ocorrencia : gera histórico
+Contrato "1" *-- "0..*" Fiscalizacao : é vistoriado
+Contrato "1" *-- "0..*" Alerta : gera
+Usuario "1" -- "0..*" Fiscalizacao : realiza
+Usuario "1" -- "0..*" Alerta : visualiza
+Usuario "1" -- "0..*" LogAuditoria : executa
+Contrato "1" -- "0..*" LogAuditoria : gera trilha
+
+' Dependências de Serviços
+CalculadoraRiscoService ..> Contrato : analisa
+CalculadoraRiscoService ..> Alerta : dispara criação
+SincronizadorEloweb ..> Contrato : atualiza
+ExportadorPNCP ..> Contrato : exporta
+@enduml
