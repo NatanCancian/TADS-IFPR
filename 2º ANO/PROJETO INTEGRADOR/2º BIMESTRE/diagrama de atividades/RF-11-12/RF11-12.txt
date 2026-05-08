@@ -1,0 +1,36 @@
+@startuml
+title Fluxo de Execução Financeira e Reatividade Backend
+
+|Frontend (React)|
+start
+:Selecionar Contrato;
+:Preencher Dados de Execução\n(Empenho, Liquidação ou Pagamento);
+:Enviar requisição (POST/PUT);
+
+|Backend (Spring Boot)|
+:Validar JWT e Perfil (Gestor/Financeiro);
+if (Dados e Valores Válidos?) then (Sim)
+  :Salvar na Tabela Transacional\n(ExecucaoFinanceira);
+  
+  fork
+    :Gravar Log de Auditoria (RF14);
+  fork again
+    :FinanceiroService:\nRecalcular Saldo e Pendências;
+  fork again
+    :ContratoMetricaService:\nAtualizar Métricas Derivadas;
+  end fork
+  
+  :Disparar Evento Interno:\nAtualização Concluída;
+  :Retornar Status 200 (Sucesso);
+  
+|Frontend (React)|
+  :Exibir Toast de Sucesso;
+  stop
+else (Não)
+|Backend (Spring Boot)|
+  :Retornar 400 (Bad Request);
+|Frontend (React)|
+  :Exibir Erro de Validação\n(Ex: "Valor de liquidação excede empenho");
+  stop
+endif
+@enduml

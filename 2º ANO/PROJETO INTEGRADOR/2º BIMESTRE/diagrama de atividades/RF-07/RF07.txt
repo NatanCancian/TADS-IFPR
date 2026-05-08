@@ -1,0 +1,40 @@
+@startuml
+title Fluxo de Sincronização Incremental - Eloweb (RF07)
+
+|Gatilho (Cron Job ou Gestor)|
+start
+:Iniciar Sincronização Incremental;
+
+|Backend (SincronizadorEloweb)|
+:Identificar data da última sincronização com sucesso;
+:Disparar requisição GET (com data de corte);
+
+|API Eloweb (Externa)|
+:Processar requisição;
+:Retornar JSON com eventos novos/modificados;
+
+|Backend (SincronizadorEloweb)|
+if (API Disponível e Status 200?) then (Sim)
+  if (Existem novos dados no JSON?) then (Sim)
+    :Converter JSON para DTOs;
+    :Mapear DTOs para Entidades de Domínio;
+    :Salvar/Atualizar no PostgreSQL;
+    
+    fork
+      :ContratoMetricaService:\nRecalcular Saldo e Execução dos Contratos Afetados;
+    fork again
+      :Gravar Log de Auditoria de Integração;
+    end fork
+    
+    :Registrar Sincronização Bem-Sucedida;
+    stop
+  else (Não)
+    :Registrar "Nenhum dado novo no período";
+    stop
+  endif
+else (Não)
+  :Registrar Erro de Conexão/Indisponibilidade;
+  :Agendar Retry Automático;
+  stop
+endif
+@enduml

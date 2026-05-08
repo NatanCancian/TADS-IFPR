@@ -1,0 +1,158 @@
+@startuml
+title GESCONP - Diagrama Entidade-Relacionamento (Físico - Enterprise)
+
+' Configurações visuais
+skinparam roundcorner 5
+skinparam linetype ortho
+skinparam shadowing false
+skinparam class {
+    BackgroundColor White
+    ArrowColor #2688d4
+    BorderColor #2688d4
+}
+
+entity "orgaos" {
+  * id : BIGSERIAL <<PK>>
+  --
+  nome : VARCHAR(255)
+  sigla : VARCHAR(20)
+}
+
+entity "fornecedores" {
+  * id : BIGSERIAL <<PK>>
+  --
+  nome : VARCHAR(255)
+  cnpj : VARCHAR(14) <<UNIQUE>>
+  email : VARCHAR(255)
+}
+
+entity "categorias" {
+  * id : BIGSERIAL <<PK>>
+  --
+  nome : VARCHAR(100)
+}
+
+entity "usuarios" {
+  * id : BIGSERIAL <<PK>>
+  --
+  nome : VARCHAR(255)
+  matricula : VARCHAR(50) <<UNIQUE>>
+  perfil : VARCHAR(20)
+}
+
+entity "contratos" {
+  * id : BIGSERIAL <<PK>>
+  --
+  numero : VARCHAR(50) <<UNIQUE>>
+  objeto : TEXT
+  valor_total : NUMERIC(15,2)
+  data_inicio : DATE
+  data_fim : DATE
+  status : VARCHAR(20)
+  risco_atual : VARCHAR(20)
+  * orgao_id : BIGINT <<FK>>
+  * fornecedor_id : BIGINT <<FK>>
+  * categoria_id : BIGINT <<FK>>
+}
+
+entity "execucao_financeira" {
+  * id : BIGSERIAL <<PK>>
+  --
+  nota_empenho : VARCHAR(50)
+  descricao_fatura : TEXT
+  valor_empenhado : NUMERIC(15,2)
+  data_empenho : DATE
+  valor_liquidado : NUMERIC(15,2)
+  data_liquidacao : DATE
+  valor_pago : NUMERIC(15,2)
+  data_pagamento : DATE
+  status : VARCHAR(20)
+  * contrato_id : BIGINT <<FK>>
+}
+
+entity "aditivos" {
+  * id : BIGSERIAL <<PK>>
+  --
+  data_assinatura : DATE
+  valor_alterado : NUMERIC(15,2)
+  prazo_extensao_dias : INT
+  tipo : VARCHAR(20)
+  * contrato_id : BIGINT <<FK>>
+}
+
+entity "documentos" {
+  * id : BIGSERIAL <<PK>>
+  --
+  nome_arquivo : VARCHAR(255)
+  url_storage : VARCHAR(500)
+  tipo : VARCHAR(50)
+  mime_type : VARCHAR(100)
+  tamanho_bytes : BIGINT
+  hash_integridade : VARCHAR(256)
+  data_upload : TIMESTAMP
+  * contrato_id : BIGINT <<FK>>
+}
+
+entity "fiscalizacoes" {
+  * id : BIGSERIAL <<PK>>
+  --
+  data : DATE
+  parecer : TEXT
+  nota_qualidade : NUMERIC(3,2)
+  nota_prazo : NUMERIC(3,2)
+  nota_conformidade : NUMERIC(3,2)
+  aprovado : BOOLEAN
+  * contrato_id : BIGINT <<FK>>
+  * usuario_id : BIGINT <<FK>>
+}
+
+entity "ocorrencias" {
+  * id : BIGSERIAL <<PK>>
+  --
+  descricao : TEXT
+  gravidade : VARCHAR(20)
+  data : DATE
+  * contrato_id : BIGINT <<FK>>
+}
+
+entity "alertas" {
+  * id : BIGSERIAL <<PK>>
+  --
+  titulo : VARCHAR(100)
+  mensagem : TEXT
+  tipo : VARCHAR(30)
+  data_criacao : TIMESTAMP
+  lido : BOOLEAN
+  * contrato_id : BIGINT <<FK>>
+  usuario_id : BIGINT <<FK>> ' Opcional: se o alerta for para um usuário específico
+}
+
+entity "logs_auditoria" {
+  * id : BIGSERIAL <<PK>>
+  --
+  operacao : VARCHAR(100)
+  entidade_afetada : VARCHAR(100)
+  entidade_id : BIGINT
+  dados_anteriores : JSONB
+  dados_novos : JSONB
+  ip : VARCHAR(45)
+  timestamp : TIMESTAMP
+  * usuario_id : BIGINT <<FK>>
+}
+
+' Relacionamentos
+orgaos ||--o{ contratos
+fornecedores ||--o{ contratos
+categorias ||--o{ contratos
+contratos ||--o{ aditivos
+contratos ||--o{ execucao_financeira
+contratos ||--o{ documentos
+contratos ||--o{ fiscalizacoes
+contratos ||--o{ ocorrencias
+contratos ||--o{ alertas
+
+usuarios ||--o{ fiscalizacoes
+usuarios ||--o{ alertas
+usuarios ||--o{ logs_auditoria
+
+@enduml

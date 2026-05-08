@@ -1,0 +1,39 @@
+@startuml
+title Fluxo de Registro de Fiscalização e Reatividade (RF16)
+
+|Frontend (React)|
+start
+:Selecionar Contrato;
+:Preencher Avaliação\n(Notas de Prazo, Qualidade, Conformidade);
+:Anexar Parecer Técnico (PDF/Doc);
+:Enviar requisição (POST /fiscalizacoes);
+
+|Backend (Spring Boot)|
+:Validar Token JWT e Perfil (Fiscal);
+if (Formulário Válido e Extensão Permitida?) then (Sim)
+  :Fazer Upload do Arquivo (Storage);
+  :Gerar Hash de Integridade (Documento);
+  :Persistir 'fiscalizacoes' e vinculá-la ao 'documentos';
+  
+  fork
+    :Gravar Log de Auditoria (RF14);
+  fork again
+    :CalculadoraRiscoService:\nRecalcular Risco usando as novas Notas;
+  fork again
+    :ContratoMetricaService:\nAtualizar Indicador Geral de Performance;
+  end fork
+  
+  :Retornar 201 (Created);
+  
+|Frontend (React)|
+  :Exibir Sucesso;
+  :Atualizar Histórico de Inspeções na Tela;
+  stop
+else (Não)
+|Backend (Spring Boot)|
+  :Retornar 400 (Bad Request);
+|Frontend (React)|
+  :Destacar campos inválidos ou erro de arquivo;
+  stop
+endif
+@enduml

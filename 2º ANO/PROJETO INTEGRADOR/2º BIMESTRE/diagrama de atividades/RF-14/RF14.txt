@@ -1,0 +1,26 @@
+@startuml
+title Fluxo de Consulta de Auditoria e Rastreabilidade (RF14)
+
+|Frontend (React - Perfil Auditor)|
+start
+:Acessar Módulo de Auditoria;
+:Aplicar Filtros (Contrato, Usuário ou Período);
+:Disparar requisição GET /auditoria;
+
+|Backend (Spring Boot)|
+:Validar JWT e Perfil (Auditor);
+:Consultar tabela 'logs_auditoria';
+:Interpretar campos 'JSONB'\n(dados_anteriores e dados_novos);
+:Mapear para DTO estruturado\n(Ocultando dados sensíveis de infraestrutura);
+:Retornar Lista de Histórico;
+
+|Frontend (React - Perfil Auditor)|
+if (Existem registros?) then (Sim)
+  :Renderizar Timeline de Eventos;
+  :Destacar visualmente o "De -> Para"\ndas alterações;
+  stop
+else (Não)
+  :Exibir "Nenhuma alteração\nno período selecionado";
+  stop
+endif
+@enduml

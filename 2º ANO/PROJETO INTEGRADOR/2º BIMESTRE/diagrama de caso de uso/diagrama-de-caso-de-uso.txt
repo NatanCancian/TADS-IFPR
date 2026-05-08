@@ -1,0 +1,106 @@
+@startuml
+title GESCONP - Diagrama de Casos de Uso (Enterprise)
+
+left to right direction
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+' Atores Humanos
+actor "Gestor" as gestor
+actor "Fiscal" as fiscal
+actor "Auditor" as auditor
+
+' Atores Sistêmicos
+actor "Sistema (Automático)" as sistema
+actor "API Eloweb" as eloweb
+
+package "GESCONP - Plataforma de Governança" {
+    
+    usecase "Autenticar Usuário" as UC_Auth
+    
+    package "Módulo Transacional e Cadastros" {
+        usecase "Gerenciar Fornecedores e Órgãos" as UC_Cadastros
+        usecase "Gerenciar Contratos" as UC_Contratos
+        usecase "Registrar Aditivo" as UC_Aditivo
+        usecase "Visualizar Contrato" as UC_Visualizar
+    }
+    
+    package "Módulo de Execução Financeira" {
+        usecase "Registrar Execução Financeira" as UC_Execucao
+        note right of UC_Execucao : Engloba Empenho,\nLiquidação e Pagamento
+    }
+    
+    package "Módulo de Fiscalização" {
+        usecase "Registrar Fiscalização e Notas" as UC_Fiscalizacao
+        usecase "Registrar Ocorrência" as UC_Ocorrencia
+    }
+    
+    package "Módulo Analítico e Dashboards" {
+        usecase "Visualizar Dashboard Geral" as UC_Dashboard
+        usecase "Consultar Logs de Auditoria" as UC_Logs
+    }
+    
+    package "Processos Internos (Serviços de Domínio)" {
+        usecase "Consolidar Métricas do Contrato" as UC_Consolidar
+        usecase "Calcular Risco Contratual" as UC_CalcRisco
+        usecase "Gerar Alertas Automáticos" as UC_Alertas
+        usecase "Gravar Trilha de Auditoria" as UC_Trilha
+    }
+    
+    package "Módulo de Integração" {
+        usecase "Sincronizar Dados Incrementais" as UC_Sincronizar
+        usecase "Exportar Dados (Padrão PNCP)" as UC_PNCP
+    }
+}
+
+' --- Relacionamentos ---
+
+' Herança/Inclusão de Autenticação (Simplificado visualmente)
+gestor ..> UC_Auth : <<include>>
+fiscal ..> UC_Auth : <<include>>
+auditor ..> UC_Auth : <<include>>
+
+' Gestor
+gestor --> UC_Cadastros
+gestor --> UC_Contratos
+gestor --> UC_Visualizar
+gestor --> UC_Aditivo
+gestor --> UC_Execucao
+
+' Fiscal
+fiscal --> UC_Visualizar
+fiscal --> UC_Fiscalizacao
+fiscal --> UC_Ocorrencia
+
+' Auditor
+auditor --> UC_Visualizar
+auditor --> UC_Dashboard
+auditor --> UC_Logs
+
+' Integrações Externas
+UC_Sincronizar <-- eloweb
+
+' Ações do Sistema Automático (Backend Orquestrador)
+sistema --> UC_Sincronizar
+sistema --> UC_PNCP
+sistema --> UC_Consolidar
+sistema --> UC_CalcRisco
+sistema --> UC_Alertas
+sistema --> UC_Trilha
+
+' Lógica de Reatividade e Inteligência (Includes/Extends Internos)
+' Quando uma execução ou fiscalização ocorre, o sistema reage
+UC_Execucao ..> UC_Consolidar : <<include>>
+UC_Execucao ..> UC_CalcRisco : <<include>>
+UC_Execucao ..> UC_Trilha : <<include>>
+
+UC_Fiscalizacao ..> UC_CalcRisco : <<include>>
+UC_Fiscalizacao ..> UC_Trilha : <<include>>
+
+UC_Aditivo ..> UC_Consolidar : <<include>>
+UC_Aditivo ..> UC_Trilha : <<include>>
+
+' Se o risco calculado for alto, gera alerta
+UC_CalcRisco ..> UC_Alertas : <<extend>>
+
+@enduml

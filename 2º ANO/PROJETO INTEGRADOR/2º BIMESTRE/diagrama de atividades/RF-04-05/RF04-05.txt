@@ -1,0 +1,41 @@
+@startuml
+title Fluxo de Registro de Aditivo e Reatividade (RF04/RF05)
+
+|Frontend (React)|
+start
+:Selecionar Contrato;
+:Selecionar Tipo de Aditivo\n(Valor, Prazo ou Escopo);
+:Preencher novos valores e anexar Termo;
+:Enviar requisição (POST /aditivos);
+
+|Backend (Spring Boot)|
+:Validar JWT e Perfil (Gestor);
+if (Regras de Limite da Lei 14.133\nforam respeitadas?) then (Sim)
+  :Fazer upload do Termo (Storage);
+  :Persistir entidade 'Aditivo';
+  :Atualizar 'valor_total' ou 'data_fim'\nna tabela 'Contratos';
+  
+  fork
+    :Gravar Log de Auditoria (JSONB);
+  fork again
+    :FinanceiroService:\nRecalcular Saldo Disponível;
+  fork again
+    :ContratoMetricaService:\nRecalcular % de Execução;
+  fork again
+    :CalculadoraRiscoService:\nRecalcular Risco (novo prazo/valor);
+  end fork
+  
+  :Retornar 201 (Created);
+  
+|Frontend (React)|
+  :Exibir Sucesso;
+  :Atualizar Resumo do Contrato na Tela;
+  stop
+else (Não)
+|Backend (Spring Boot)|
+  :Retornar 400 ou 422;
+|Frontend (React)|
+  :Exibir Erro: "Acréscimo ultrapassa\no limite legal de 25%";
+  stop
+endif
+@enduml

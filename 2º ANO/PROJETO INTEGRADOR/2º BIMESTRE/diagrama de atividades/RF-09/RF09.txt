@@ -1,0 +1,30 @@
+@startuml
+title Fluxo de Monitoramento via Dashboard (Frontend Consumidor)
+
+|Frontend (React)|
+start
+:Usuário acessa rota /dashboard;
+:Disparar requisição GET /api/dashboard;
+
+|Backend (Spring Boot)|
+:Validar JWT;
+:Consultar Tabela/View de Métricas\n(ContratoMetricaService);
+note right: O cálculo pesado já foi feito\nanteriormente de forma incremental.
+:Montar DTO consolidado\n(Saldos, Riscos, Vencimentos);
+:Retornar JSON estruturado;
+
+|Frontend (React)|
+if (JSON contém dados?) then (Sim)
+  fork
+    :Renderizar Gráficos de Execução;
+  fork again
+    :Renderizar Alertas Críticos;
+  fork again
+    :Exibir Tabela de Contratos (Risco Alto);
+  end fork
+  stop
+else (Não)
+  :Exibir "Nenhum dado disponível\npara o período";
+  stop
+endif
+@enduml

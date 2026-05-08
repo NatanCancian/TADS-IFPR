@@ -1,0 +1,31 @@
+@startuml
+title Fluxo de Exportação Padrão PNCP (RF21)
+
+|Gatilho Automático (Cron)|
+start
+:Disparar Job de Exportação Diária;
+
+|Backend (ExportadorPNCP)|
+:Consultar 'Contratos' e 'Aditivos'\ncriados/alterados nas últimas 24h;
+if (Existem dados novos?) then (Sim)
+  :Mapear Entidades para o\nFormato DTO do PNCP (JSON/XML);
+  :Aplicar Assinatura Digital / Token Gov.br;
+  
+  |API PNCP (Governo Federal)|
+  :Enviar Payload (POST /contratos);
+  :Retornar Recibo de Entrega;
+  
+  |Backend (ExportadorPNCP)|
+  if (Status == 200/201?) then (Sim)
+    :Gravar Log de Auditoria:\n"Exportação Concluída";
+    :Atualizar flag 'enviado_pncp' no Contrato;
+  else (Não)
+    :Gravar Log de Erro;\n:Notificar Admin do Sistema;
+  endif
+  stop
+else (Não)
+  |Backend (ExportadorPNCP)|
+  :Registrar "Nenhum dado pendente de envio";
+  stop
+endif
+@enduml

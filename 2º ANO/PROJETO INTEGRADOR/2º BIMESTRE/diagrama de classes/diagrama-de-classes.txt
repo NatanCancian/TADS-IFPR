@@ -1,7 +1,7 @@
 @startuml
-title GESCONP - Diagrama de Classes Final (Completo e Unificado)
+title GESCONP - Diagrama de Classes Arquitetural (Enterprise)
 
-' Configurações de estilo para melhor visualização
+' Configurações de estilo
 skinparam packageStyle rectangle
 skinparam shadowing false
 left to right direction
@@ -30,31 +30,34 @@ package "Domínio Organizacional" {
         - String nomeArquivo
         - String urlStorage
         - TipoDocumento tipo
+        - String mimeType
+        - Long tamanhoBytes
+        - String hashIntegridade
         - LocalDateTime dataUpload
     }
 
     class LogAuditoria {
         - Long id
         - String operacao
+        - String entidadeAfetada
+        - Long entidadeId
         - String dadosAnteriores
         - String dadosNovos
+        - String ip
         - LocalDateTime timestamp
     }
 }
 
-package "Núcleo do Contrato" {
+package "Núcleo Transacional (Contrato)" {
     class Contrato {
         - Long id
         - String numero
         - String objeto
         - BigDecimal valorTotal
-        - BigDecimal saldoDisponivel
         - LocalDate dataInicio
         - LocalDate dataFim
         - StatusContrato status
         - NivelRisco riscoAtual
-        + calcularSaldo(): BigDecimal
-        + atualizarRisco(NivelRisco novo): void
     }
 
     class Aditivo {
@@ -65,11 +68,17 @@ package "Núcleo do Contrato" {
         - TipoAditivo tipo
     }
 
-    class Empenho {
+    class ExecucaoFinanceira {
         - Long id
         - String notaEmpenho
-        - BigDecimal valor
-        - LocalDate dataEmissao
+        - String descricaoFatura
+        - BigDecimal valorEmpenhado
+        - LocalDate dataEmpenho
+        - BigDecimal valorLiquidado
+        - LocalDate dataLiquidacao
+        - BigDecimal valorPago
+        - LocalDate dataPagamento
+        - StatusExecucao status
     }
 }
 
@@ -85,6 +94,9 @@ package "Fiscalização e Inteligência" {
         - Long id
         - LocalDate data
         - String parecer
+        - Double notaQualidade
+        - Double notaPrazo
+        - Double notaConformidade
         - Boolean aprovado
     }
     
@@ -95,7 +107,6 @@ package "Fiscalização e Inteligência" {
         - TipoAlerta tipo
         - LocalDateTime dataCriacao
         - Boolean lido
-        + marcarComoLido(): void
     }
 
     class Usuario {
@@ -106,13 +117,23 @@ package "Fiscalização e Inteligência" {
     }
 }
 
-package "Serviços e Integração" {
+package "Camada de Serviços (Backend Inteligente)" {
     class CalculadoraRiscoService {
-        + calcular(Contrato c): NivelRisco
+        + calcularScore(Contrato c): NivelRisco
+    }
+    
+    class FinanceiroService {
+        + calcularSaldoRestante(Contrato c): BigDecimal
+        + calcularPendentePagamento(Contrato c): BigDecimal
+        + processarLiquidacao(ExecucaoFinanceira ef, BigDecimal valor): void
+    }
+    
+    class ContratoMetricaService {
+        + gerarMetricasDashboard(Contrato c): DTO
     }
     
     class SincronizadorEloweb {
-        + executarSincronizacao(): void
+        + executarSincronizacaoIncremental(): void
     }
     
     class ExportadorPNCP {
@@ -120,70 +141,84 @@ package "Serviços e Integração" {
     }
 }
 
-' Enumerações (Corrigidas: itens separados por nova linha)
-enum StatusContrato {
+' Enumerações formatadas com quebra de linha para evitar Syntax Error
+enum StatusContrato { 
     ATIVO
     ENCERRADO
     INATIVO
-    SUSPENSO
+    SUSPENSO 
 }
 
-enum NivelRisco {
+enum NivelRisco { 
     BAIXO
     MEDIO
-    ALTO
+    ALTO 
 }
 
-enum TipoAlerta {
+enum TipoAlerta { 
     RISCO_ELEVADO
     SALDO_CRITICO
-    VENCIMENTO_PROXIMO
+    VENCIMENTO_PROXIMO 
 }
 
-enum Perfil {
+enum Perfil { 
     GESTOR
     FISCAL
     AUDITOR
-    ADMIN
+    ADMIN 
 }
 
-enum Gravidade {
+enum Gravidade { 
     BAIXA
     MEDIA
-    ALTA
+    ALTA 
 }
 
-enum TipoAditivo {
+enum TipoAditivo { 
     VALOR
     PRAZO
-    ESCOPO
+    ESCOPO 
 }
 
-enum TipoDocumento {
+enum TipoDocumento { 
     ATA
     EMPENHO
     ADITIVO
-    EXTRATO
+    EXTRATO 
 }
 
-' Relacionamentos e Associações
+enum StatusExecucao { 
+    EMPENHADO
+    LIQUIDADO
+    PAGO
+    CANCELADO 
+}
+
+' Relacionamentos Organizacionais
 Contrato "1" --> "1" Fornecedor : contratada
 Contrato "1" --> "1" Orgao : contratante
 Contrato "1" --> "1" Categoria : classificado em
+
+' Relacionamentos de Estrutura
 Contrato "1" *-- "0..*" Aditivo : possui
-Contrato "1" *-- "0..*" Empenho : consome saldo
+Contrato "1" *-- "0..*" ExecucaoFinanceira : registra gasto
 Contrato "1" *-- "0..*" Documento : possui anexos
+
+' Relacionamentos de Inteligência e Fiscalização
 Contrato "1" *-- "0..*" Ocorrencia : gera histórico
 Contrato "1" *-- "0..*" Fiscalizacao : é vistoriado
 Contrato "1" *-- "0..*" Alerta : gera
+
+' Relacionamentos de Usuário e Auditoria
 Usuario "1" -- "0..*" Fiscalizacao : realiza
 Usuario "1" -- "0..*" Alerta : visualiza
 Usuario "1" -- "0..*" LogAuditoria : executa
-Contrato "1" -- "0..*" LogAuditoria : gera trilha
 
 ' Dependências de Serviços
 CalculadoraRiscoService ..> Contrato : analisa
-CalculadoraRiscoService ..> Alerta : dispara criação
-SincronizadorEloweb ..> Contrato : atualiza
+FinanceiroService ..> Contrato : processa finanças
+ContratoMetricaService ..> Contrato : consolida dados
+SincronizadorEloweb ..> Contrato : atualiza incrementalmente
 ExportadorPNCP ..> Contrato : exporta
+
 @enduml

@@ -1,0 +1,38 @@
+@startuml
+title Processo Interno: Cálculo de Risco e Alertas (Automático)
+
+|Eventos (Gatilhos)|
+start
+split
+   :Nova Execução Financeira Registrada;
+split again
+   :Nova Fiscalização Registrada;
+split again
+   :Rotina Diária (Cron Job de Vigência);
+end split
+
+|Backend (CalculadoraRiscoService)|
+:Carregar Contrato e suas Métricas;
+:Aplicar Algoritmo de Risco\n(Pesos: Financeiro, Prazo, Qualidade);
+:Gerar novo Score (0 a 100);
+
+if (Score mudou de Nível?) then (Sim)
+  :Atualizar NivelRisco na base de dados;
+  
+  if (Nível == ALTO ou CRÍTICO?) then (Sim)
+    |Backend (AlertaService)|
+    :Instanciar novo objeto Alerta;
+    :Vincular Alerta ao Contrato e Usuários;
+    :Persistir Alerta no Banco;
+    
+    ' Opcional para TCC: envio de e-mail '
+    :Disparar E-mail para Gestor/Fiscal;
+  else (Não)
+  endif
+else (Não)
+endif
+
+|Backend (CalculadoraRiscoService)|
+:Encerrar processo assíncrono;
+stop
+@enduml

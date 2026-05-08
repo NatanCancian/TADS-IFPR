@@ -1,0 +1,34 @@
+@startuml
+title Fluxo de Cadastro de Contrato (Arquitetura Enterprise)
+
+|Frontend (React)|
+start
+:Acessar Módulo de Contratos;
+:Preencher Formulário do Contrato\n(Órgão, Fornecedor, Datas, Valor Total);
+:Enviar requisição (POST /contratos);
+
+|Backend (Spring Boot)|
+:Validar Token JWT e Perfil (Gestor/Admin);
+if (Dados e Regras de Negócio Válidos?) then (Sim)
+  :Persistir na tabela transacional 'contratos';
+  
+  fork
+    :Gravar Log de Auditoria (RF14)\nRegistrando IP e Usuário;
+  fork again
+    :ContratoMetricaService:\nInicializar Métricas Zeradas\n(Saldo 100%, Execução 0%);
+  end fork
+  
+  :Retornar 201 (Created);
+  
+|Frontend (React)|
+  :Exibir Mensagem de Sucesso;
+  :Redirecionar para Dashboard do Contrato;
+  stop
+else (Não)
+|Backend (Spring Boot)|
+  :Retornar 400 (Bad Request);
+|Frontend (React)|
+  :Exibir Erros de Validação\n(Ex: "Data de fim menor que início");
+  stop
+endif
+@enduml
