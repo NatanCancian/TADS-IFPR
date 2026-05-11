@@ -1,77 +1,77 @@
- class Personagem{
+class Personagem {
     protected nome: string;
     protected planeta_origem: string;
     protected nivel_energia: number;
 
-    constructor(nome: string, planeta_origem: string, nivel_energia: number){
+    constructor(nome: string, planeta_origem: string, nivel_energia: number) {
         this.nome = nome;
         this.planeta_origem = planeta_origem;
         this.nivel_energia = nivel_energia;
     }
-    
-     apresentar(): void{
+
+    apresentar(): void {
         console.log(` Meu nome é ${this.nome}
             , sou do planeta ${this.planeta_origem}, 
             meu poder é ${this.nivel_energia}
             `);
     }
 
-     usarHabilidade(): void{
+    usarHabilidade(): void {
         console.log(`${this.nome} usou o poder
             `);
     }
- }
-    class Jedi extends Personagem{
-        private corSabre : string;
-        constructor(nome: string, planeta_origem: string, nivel_energia: number, sabre: string){
-            super(nome,planeta_origem, nivel_energia);
-            this.corSabre = sabre;
-        }
-        apresentar(): void {
+}
+class Jedi extends Personagem {
+    private corSabre: string;
+    constructor(nome: string, planeta_origem: string, nivel_energia: number, sabre: string) {
+        super(nome, planeta_origem, nivel_energia);
+        this.corSabre = sabre;
+    }
+    apresentar(): void {
         console.log(`======== Jedi ======== 
                         Nome ${this.nome} 
                         Planeta: ${this.planeta_origem}  
                         Energia: ${this.nivel_energia}
             `);
     }
-        usarHabilidade(): void {
+    usarHabilidade(): void {
         console.log(`O Jedi ${this.nome} usou a Força para proteger a galaxia 
                      Cor do sabre de luz: ${this.corSabre}
             `);
-    }    
+    }
 }
 
-    class Sith extends Personagem{
-        private nivelRaiva : number;
-        constructor(nome: string, planeta: string, energia: number, nivelRaiva: number){
-            super(nome,planeta,energia);
-            this.nivelRaiva = nivelRaiva;
-        }
+class Sith extends Personagem {
+    private nivelRaiva: number;
+    constructor(nome: string, planeta: string, energia: number, nivelRaiva: number) {
+        super(nome, planeta, energia);
+        this.nivelRaiva = nivelRaiva;
+    }
 
-         apresentar(): void {
-            console.log(`======== Sith ======== 
+    apresentar(): void {
+        console.log(`======== Sith ======== 
                            Nome ${this.nome} 
                            Planeta: ${this.planeta_origem}  
                            Energia: ${this.nivel_energia}
             `);
-         }
+    }
 
-        usarHabilidade(): void {
-            console.log(`O Sith ${this.nome} usou o lado sombrio da Força.
+    usarHabilidade(): void {
+        console.log(`O Sith ${this.nome} usou o lado sombrio da Força.
                          Nível de raiva: ${this.nivelRaiva}
                 `);
     }
-  }
+}
 
-  class Droide extends Personagem{
+class Droide extends Personagem {
     protected funcao: string;
-    constructor(nome: string, planeta: string, energia: number, funcao: string){
+    constructor(nome: string, planeta: string, energia: number, funcao: string) {
         super(nome, planeta, energia);
         this.funcao = funcao;
     }
-    
+
     apresentar(): void {
-       console.log(`======== Droide ======== 
+        console.log(`======== Droide ======== 
                      Nome ${this.nome} 
                      Planeta: ${this.planeta_origem}  
                      Energia: ${this.nivel_energia}
@@ -79,20 +79,20 @@
     }
 
     usarHabilidade(): void {
-            console.log(`O Droide ${this.nome} executou sua função - ${this.funcao}
+        console.log(`O Droide ${this.nome} executou sua função - ${this.funcao}
             `);
     }
-  }
+}
 
-  class Mandaloriano extends Personagem{
+class Mandaloriano extends Personagem {
     protected armaPrincipal: string;
-    constructor(nome: string, planeta: string, energia: number, armaPrincipal: string){
-        super(nome,planeta,energia);
-        this.armaPrincipal = armaPrincipal;        
+    constructor(nome: string, planeta: string, energia: number, armaPrincipal: string) {
+        super(nome, planeta, energia);
+        this.armaPrincipal = armaPrincipal;
     }
 
-     apresentar(): void {
-       console.log(`======== Mandaloriano ======== 
+    apresentar(): void {
+        console.log(`======== Mandaloriano ======== 
                      Nome ${this.nome} 
                      Planeta: ${this.planeta_origem}  
                      Energia: ${this.nivel_energia}
@@ -100,10 +100,10 @@
     }
 
     usarHabilidade(): void {
-            console.log(`O Mandaloriano ${this.nome} atacou com - ${this.armaPrincipal}
+        console.log(`O Mandaloriano ${this.nome} atacou com - ${this.armaPrincipal}
             `);
-    } 
-  }
+    }
+}
 
 const jedi1 = new Jedi("Yoda", "Dagobah", 98, "verde");
 jedi1.apresentar();
@@ -121,6 +121,19 @@ const mandaloriano1 = new Mandaloriano("Boba Fett", "Concord Down", 85, "blaster
 mandaloriano1.apresentar();
 mandaloriano1.usarHabilidade();
 
+// 1. Qual classe é a superclasse do exercício?
+// A classe Personagem.
+
+// 2. Quais classes são subclasses?
+// Jedi, Sith, Droide e Mandaloriano.
+
+// 3. Por que usamos super(...) no construtor das subclasses?
+// Para chamar o construtor da superclasse e inicializar seus atributos.
+
+// 4. Qual a diferença entre private e protected?
+// Um atributo private só pode ser acessado dentro de sua classe, já o protected pode ser acessado apenas pela classe e as suas subclasses, e classes dentro do package.
+
+// 5. O que é sobrescrita de método?
+// É umas das formas de polimorfismo em POO. Uma subclasse pode implementar um método com a mesma assinatura de sua superclasse, porém com um comportamento diferente.
 
 
- 
