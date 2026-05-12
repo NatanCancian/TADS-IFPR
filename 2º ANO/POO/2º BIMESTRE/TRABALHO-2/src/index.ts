@@ -11,6 +11,10 @@ class Pessoa {
         console.log(`Meu nome é ${this.nome}, tenho ${this.idade}`);
     }
 }
+
+const pessoa1 = new Pessoa("pessoa 1", 1);
+pessoa1.apresentar();
+
     class Aluno extends Pessoa{
         protected matricula : string;
         protected curso : string;
@@ -28,6 +32,9 @@ class Pessoa {
                 curso: ${this.curso}`);
         }
     }
+
+const aluno3 = new Aluno("aluno 1 -- ", 21, "2024CAS221433", "TADS");
+aluno3.exibirDadosAluno();
     
     class Professor extends Pessoa{
         protected disciplina : string;
@@ -46,6 +53,10 @@ class Pessoa {
         }
     }
 
+const professor3 = new Professor("Professor1", 35, "S.O");
+professor3.apresentar();
+professor3.darAula();
+
     class Coordenador extends Pessoa{
         protected cursoCoordenado: string;
 
@@ -55,7 +66,7 @@ class Pessoa {
         }
 
         apresentar(): void {
-            console.log(`Eu sou o coordenador ${this.nome}, e coordeno o curso de: ${this.cursoCoordenado}`);
+            console.log(`Eu sou o coordenador ${this.nome}, do curso de: ${this.cursoCoordenado}`);
         }
 
         fazerReuniao(): void{
@@ -63,6 +74,9 @@ class Pessoa {
         }
     }
 
+const coordenador1 = new Coordenador("Coordenador 1", 38, "TADS");
+coordenador1.apresentar();
+coordenador1.fazerReuniao();
 
     class Veiculo{
         protected marca: string;
@@ -96,6 +110,10 @@ class Pessoa {
         }
     }
 
+const ferrari = new Carro("Ferrari", "Testarossa", 2);
+ferrari.exibirDados();
+ferrari.ligarSom();
+
     class Moto extends Veiculo{
         protected cilindradas: number;
         constructor(marca: string, modelo: string, cilindradas: number){
@@ -113,6 +131,10 @@ class Pessoa {
         }        
     }
 
+const srad = new Moto("Suzuki", "GSX-R 750", 750);
+srad.acelerar();
+srad.exibirDados();
+
     class Caminhao extends Veiculo{
         protected carga : string;
         constructor(marca: string, modelo: string, carga: string){
@@ -129,6 +151,10 @@ class Pessoa {
         }       
     }
 
+const truck = new Caminhao("Scania", "113H", "Madeira");
+truck.carregar();
+truck.exibirDados();
+
     class Funcionario{
         protected nome: string;
         protected salario: number;
@@ -139,12 +165,17 @@ class Pessoa {
         }
     }
 
+const funcionario = new Funcionario("Tião", 5000);
+
+
     class Gerente extends Funcionario{
 
         exibirDadosGerente(): void{
             console.log(`Nome: ${this.nome}, salário: ${this.salario}`);
         }
     }
+
+const gerente = new Gerente("Tião-Gerente", 10000);
 
     class Conta{
         private saldo : number;
@@ -159,8 +190,10 @@ class Pessoa {
         }
 
         acessarSaldo(): void{
-            console.log(`${this.saldo}`)
+//            console.log(`${this.saldo}`);
         }
+    }
+const conta1 = new ContaPremium(5000);
 
         /* 1. O código funciona?
        R: Funciona, porém a classe ContaPremium não consegue 
@@ -177,7 +210,6 @@ class Pessoa {
        acessado diretamente, pois protected permite as classes 
        de dentro do package ou subclasse acessar o atributo. 
     */        
-    }
 
     class FuncionarioEscola{
         protected nome: string;
@@ -200,6 +232,9 @@ class Pessoa {
             console.log(`O professor ${this.nome}, está dando aula!`);
         }
     }
+   
+const professor4 = new ProfessorEscola("funcionario 2", 55, 3000);
+professor4.darAula();
 
     class Zelador extends FuncionarioEscola{
         constructor(nome: string, idade: number, salario: number){
@@ -211,6 +246,10 @@ class Pessoa {
         }
     }
 
+const zelador1 = new Zelador("zelador 1 ", 47, 2500);
+zelador1.limparAmbiente();
+
+
     class Secretario extends FuncionarioEscola{
         constructor(nome: string, idade: number, salario: number){
             super(nome,idade,salario);
@@ -220,6 +259,9 @@ class Pessoa {
             console.log(`O ${this.constructor.name} ${this.nome}, está organizando documentos!`);
         }
     }
+
+const secretario1 = new Secretario("secretario 1", 55, 4500);
+secretario1.organizarDocumentos(); 
 
     class PessoaSistema{
         protected nome: string;
@@ -240,7 +282,7 @@ class Pessoa {
             super(nome,idade);
             this.matricula = matricula;
         }
-
+        
         apresentar(): void {
             console.log(`Meu nome é ${this.nome}, e minha matrícula é ${this.matricula}`);
         }
@@ -254,6 +296,16 @@ class Pessoa {
         }
 
         apresentar(): void {
-            console.log(`Meu nome é ${this.nome}, sou professor da disciplina ${this.disciplina}`);
+            console.log(`Meu nome é ${this.nome}, sou professor da disciplina de ${this.disciplina}`);
         }
     }
+
+    const aluno1 = new AlunoSistema("Aluno 1", 22, "2025CAS1778750");
+    const aluno2 = new AlunoSistema("Aluno 2", 21, "2025CAS1778748");
+    aluno1.apresentar();
+    aluno2.apresentar();
+
+    const professor1 = new ProfessorSistema("Nelson", 40, "POO");
+    const professor2 = new ProfessorSistema("NelsonRocker", 40, "Engenharia de Software");
+    professor1.apresentar();
+    professor2.apresentar();

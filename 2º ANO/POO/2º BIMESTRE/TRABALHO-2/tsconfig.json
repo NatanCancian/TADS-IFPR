@@ -2,9 +2,9 @@
   "compilerOptions": {
      "rootDir": "./src",
      "outDir": "./dist",    
-    "module": "commonjs",
+    "module": "Node16",
     "target": "es2020",
-    "moduleResolution": "node",
+    "moduleResolution": "node16",
     "types": ["node"],
     "sourceMap": false,
     "noUncheckedIndexedAccess": true,
@@ -16,8 +16,8 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
+    "skipLibCheck": true
+  },
     "include": ["src"],
     "exclude": ["node_modules", "dist"]
-  }
 }
