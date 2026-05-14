@@ -1,0 +1,36 @@
+services:
+  wordpress:
+    image: wordpress:latest
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: usuario
+      WORDPRESS_DB_PASSWORD: senha123
+      WORDPRESS_DB_NAME: meubanco
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: meubanco
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: senha123
+      MYSQL_ROOT_PASSWORD: senharoot123
+    volumes:
+      - dados_mysql:/var/lib/mysql
+
+volumes:
+  dados_mysql:
+
+# Para usar:
+
+# Subir os containers
+## docker compose up -d
+
+# Ver os logs
+## docker compose logs -f
+
+# Derrubar tudo
+## docker compose down
