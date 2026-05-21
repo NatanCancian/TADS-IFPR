@@ -1,5 +1,3 @@
-import { extname } from "path";
-
 class Animal{
     protected nome: string;
 

@@ -1,0 +1,17 @@
+services:
+  app-web:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./meu-site:/usr/share/nginx/html # Bind Mount
+
+  banco-dados:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: 123
+    volumes:
+      - db_data:/var/lib/postgresql/data # Volume
+
+volumes:
+  db_data:
