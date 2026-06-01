@@ -1,8 +1,8 @@
 export class Emprestimo {
-  private n: number;
-  private j: number;
-  private corrente: number;
-  private p: number;
+  protected n: number;
+  protected j: number;
+  protected corrente: number;
+  protected p: number;
 
   constructor(s: number, n: number, j: number) {
     this.n = n;
